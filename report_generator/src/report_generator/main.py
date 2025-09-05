@@ -16,9 +16,23 @@ class ReportFlow(Flow[ReportState]):
 
     """A flow that generates a report about CrewAI"""
 
-    @start
-    def start(self) -> ReportState:
-        return ReportState()
+    @start()
+    def get_user_input(self):
+        user_input = input("Enter a question: ")
+        self.state.task = user_input
+        
+        return self.state.task
+
+
+    @listen(get_user_input)
+    def generate_answer(self):
+        print("Generating answer")
+        result = (
+            SanitizeCrew()
+            .crew()
+            .kickoff(inputs={"request": self.state.task})
+        )
+        print("Answer generated", result.raw)
 
 
 def kickoff():
@@ -32,4 +46,5 @@ def plot():
 
 
 if __name__ == "__main__":
+    # Test the sanitize crew
     kickoff()

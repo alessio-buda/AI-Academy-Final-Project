@@ -2,11 +2,6 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
-from src.report_generator.tools.security_tools import (
-    SecurityValidationTool,
-    PromptInjectionDetectorTool,
-    ContentFilterTool
-)
 
 
 @CrewBase
@@ -17,19 +12,15 @@ class SanitizeCrew:
     tasks: List[Task]
 
 
-    agents_config = "config/prompt_protection_agents.yaml"
-    tasks_config = "config/prompt_protection_tasks.yaml"
+    agents_config = "config/agents.yaml"
+    tasks_config = "config/tasks.yaml"
 
 
     @agent
     def input_checker(self) -> Agent:
         return Agent(
             config=self.agents_config["input_checker"],  # type: ignore[index]
-            tools=[
-                SecurityValidationTool(),
-                PromptInjectionDetectorTool(),
-                ContentFilterTool()
-            ],
+
         )
 
         

@@ -52,7 +52,7 @@ check_input_task:
 
 sanitize_input_task:
   description: |
-    Based on the security validation results: {check_input_task}
+    Based on the security validation results from the previous task analysis.
     
     **CRITICAL DECISION LOGIC:**
     

@@ -11,6 +11,7 @@ from report_generator.crews.writer_crew.writer_crew import WriterCrew
 
 class ReportState(BaseModel):
     input: str = ""
+    task: str = ""  # Add the task field that the flow is trying to use
 
 class ReportFlow(Flow[ReportState]):
 
@@ -30,7 +31,7 @@ class ReportFlow(Flow[ReportState]):
         result = (
             SanitizeCrew()
             .crew()
-            .kickoff(inputs={"request": self.state.task})
+            .kickoff(inputs={"user_input": self.state.task})  # Changed from "request" to "user_input"
         )
         print("Answer generated", result.raw)
 

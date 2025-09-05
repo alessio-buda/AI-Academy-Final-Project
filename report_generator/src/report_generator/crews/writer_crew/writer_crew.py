@@ -2,6 +2,8 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
+
+from src.report_generator.tools.rag_tool import RagTool
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
@@ -27,6 +29,14 @@ class WriterCrew():
         )
 
     @agent
+    def rag_searcher(self) -> Agent:
+        return Agent(
+            config=self.agents_config['rag_searcher'], # type: ignore[index]
+            verbose=True,
+            tools=[RagTool()] # Example of adding a tool to an agent https://docs.crewai.com/concepts/agents#agent-tools
+        )
+        
+    @agent
     def writer(self) -> Agent:
         return Agent(
             config=self.agents_config['writer'], # type: ignore[index]
@@ -43,12 +53,19 @@ class WriterCrew():
         )
 
     @task
-    def write_task(self) -> Task:
+    def rag_search_task(self) -> Task:
         return Task(
-            config=self.tasks_config['write_task'], # type: ignore[index]
+            config=self.tasks_config['rag_search_task'], # type: ignore[index]
             output_file='report.md'
         )
-
+        
+    @task
+    def write_report_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['write_report_task'], # type: ignore[index]
+            output_file='output/report.md',
+        )
+        
     @crew
     def crew(self) -> Crew:
         """Creates the WriterCrew crew"""

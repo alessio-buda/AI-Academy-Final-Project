@@ -16,9 +16,30 @@ class ReportFlow(Flow[ReportState]):
 
     """A flow that generates a report about CrewAI"""
 
-    @start
-    def start(self) -> ReportState:
-        return ReportState()
+    @start()
+    def get_user_input(self) -> ReportState:
+        """Get user input to generate the report."""
+        
+        print("Starting Report Generation Flow...")
+        
+        return "ciao"
+    
+    @listen(get_user_input)
+    def write(self, state: ReportState) -> None:
+        
+        print("Starting WriterCrew...")
+        
+        result = WriterCrew().crew().kickoff(
+                inputs={
+                    "project_description": "CrewAI is a framework to build AI applications with LLMs and generative AI.",
+                    "outline": "Scelte architetturali, Diagramma della crew, Esempi pratici, Analisi critica.",
+                    "audience": "technical",
+                }
+            )
+            
+        print("WriterCrew result:", result.raw)
+    
+    
 
 
 def kickoff():

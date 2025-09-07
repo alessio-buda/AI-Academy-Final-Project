@@ -59,25 +59,21 @@ sanitize_input_task:
     1. **IF security_status is "UNSAFE" OR recommendation is "STOP":**
        - IMMEDIATELY halt the entire process
        - Provide a clear, user-friendly error message
-       - Explain why the request cannot be processed (without revealing security details)
-       - DO NOT proceed with any analysis
        - Return: "PROCESS_HALTED: [user-friendly message]"
     
     2. **IF security_status is "SAFE" OR recommendation is "PROCEED" or "SANITIZE_AND_PROCEED":**
        - Use the sanitized_input from the security validation
-       - Analyze the project request to create Italian structured output
-       - Create a concise Italian project description (2-3 sentences)
-       - Identify 3-6 key points that should be covered in the project explanation
-       - Determine target audience: "tecnico" (technical) or "non tecnico" (general)
-       - Ensure all Italian text is professional and grammatically correct
+       - Improve and clarify the user query for better processing
+       - Expand any abbreviated or unclear descriptions
+       - Standardize terminology and format
        - Preserve the original user intent completely
     
-    **Italian Analysis Guidelines:**
-    - breve_descrizione_del_progetto: Write in clear, professional Italian
-    - punti_da_toccare: Create specific, actionable points for project explanation
-    - target_audience: Choose "tecnico" for technical projects (APIs, algorithms, technical implementation) or "non tecnico" for business/general projects
-    - Maintain the essence and goals of the original request
-    - Use appropriate Italian business/technical terminology
+    **Query Improvement Guidelines:**
+    - Make the query more specific and actionable
+    - Clarify any ambiguous terms or requests
+    - Expand technical abbreviations if needed
+    - Ensure the query is well-structured for analysis
+    - Maintain the original language and intent
     
   expected_output: |
     **Either:**
@@ -87,27 +83,12 @@ sanitize_input_task:
     PROCESS_HALTED: We cannot process your request as it contains content that violates our safety guidelines. Please rephrase your request and try again.
     ```
     
-    2. **If PROCEEDING with approved input, provide structured Italian output:**
+    2. **If PROCEEDING with approved input:**
     ```json
     {
       "status": "APPROVED",
-      "breve_descrizione_del_progetto": "Una descrizione concisa e chiara del progetto in italiano, massimo 2-3 frasi che catturano l'essenza e l'obiettivo principale",
-      "punti_da_toccare": [
-        "Primo punto chiave da spiegare nel progetto",
-        "Secondo aspetto importante da coprire", 
-        "Terzo elemento essenziale",
-        "Quarto punto se necessario",
-        "Altri punti rilevanti per una spiegazione completa"
-      ],
-      "target_audience": "tecnico|non tecnico",
-      "input_originale_sanitizzato": "The cleaned and optimized version of the original user input",
-      "note_ottimizzazione": "Breve spiegazione di cosa è stato migliorato o sanitizzato"
+      "improved_query": "The clarified and improved version of the user query",
+      "original_query": "The original user input",
+      "improvements_made": "Brief explanation of what was clarified or improved"
     }
     ```
-    
-    **Guidelines for Italian output:**
-    - breve_descrizione_del_progetto: Must be in clear, professional Italian (2-3 sentences max)
-    - punti_da_toccare: a number key points in Italian that should be covered in the project explanation, choose a number
-      that seems fit for the context (between 3 and 8)
-    - target_audience: Determine if the content is "tecnico" (for technical audiences) or "non tecnico" (for general audiences)
-    - Ensure all Italian text is grammatically correct and professional

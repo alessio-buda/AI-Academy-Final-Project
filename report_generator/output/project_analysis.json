@@ -1,0 +1,20 @@
+```json
+{
+  "breve_descrizione_del_progetto": "Realizzazione di una presentazione esaustiva di CrewAI, un framework per costruire applicazioni di intelligenza artificiale basate su LLM e tecniche di AI generativa. La presentazione copre architettura, diagrammi, esempi pratici e analisi critica per supportare team tecnici.",
+  "obiettivi_principali": [
+    "Spiegare e giustificare le scelte architetturali e i pattern di design adottati",
+    "Mostrare un diagramma chiaro dei componenti di CrewAI e delle loro interazioni",
+    "Fornire esempi pratici e snippet di codice per casi d'uso reali",
+    "Valutare punti di forza, limiti e possibili miglioramenti del framework"
+  ],
+  "componenti_chiave": [
+    "Sezione Architetture: descrizione dei pattern e motivazioni",
+    "Crew Diagram: visualizzazione dei moduli e dei flussi di dati",
+    "Practical Examples: use case reali con codice",
+    "Critical Analysis: valutazione tecnica e aree di evoluzione"
+  ],
+  "target_audience": "tecnico",
+  "complessita_tecnica": "alta",
+  "settore_applicativo": "Intelligenza Artificiale / Architettura del Software"
+}
+```

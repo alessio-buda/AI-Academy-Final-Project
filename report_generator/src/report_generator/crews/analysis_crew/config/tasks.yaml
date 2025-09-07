@@ -1,0 +1,72 @@
+analyze_project_task:
+  description: |
+    Analyze the improved user query: '{improved_query}' to extract project details and create a structured analysis.
+    
+    **Analysis Guidelines:**
+    - Extract the core project description and objectives
+    - Identify key technical or business components
+    - Determine if the project is technical or business-oriented
+    - Assess the appropriate target audience level
+    - Create a clear, concise Italian project description
+    
+    **Target Audience Determination:**
+    - "tecnico": For projects involving APIs, algorithms, technical implementation, code, architecture
+    - "non tecnico": For business projects, general concepts, management-oriented content
+    
+  expected_output: |
+    A structured JSON analysis:
+    ```json
+    {
+      "breve_descrizione_del_progetto": "Una descrizione concisa e chiara del progetto in italiano (2-3 frasi)",
+      "obiettivi_principali": ["Obiettivo 1", "Obiettivo 2", "Obiettivo 3"],
+      "componenti_chiave": ["Componente 1", "Componente 2", "Componente 3"],
+      "target_audience": "tecnico|non tecnico",
+      "complessita_tecnica": "bassa|media|alta",
+      "settore_applicativo": "Settore di applicazione del progetto"
+    }
+    ```
+
+create_outline_task:
+  description: |
+    Based on the project analysis, create a comprehensive outline with detailed subpoints for each main section.
+    
+    **Outline Structure Guidelines:**
+    - Create 4-6 main sections relevant to the project
+    - Each main section should have 3-5 subpoints
+    - Include brief descriptions for each subpoint
+    - Adapt complexity and focus based on target audience
+    - Ensure logical flow and comprehensive coverage
+    
+    **Content Areas to Consider:**
+    - Project overview and objectives
+    - Technical/business architecture
+    - Implementation details or business processes
+    - Key features or components
+    - Benefits and value proposition
+    - Future developments or recommendations
+    
+  expected_output: |
+    A detailed outline structure:
+    ```json
+    {
+      "titolo_report": "Titolo del report in italiano",
+      "sezioni": [
+        {
+          "titolo": "Nome della sezione principale",
+          "descrizione": "Breve descrizione di cosa copre questa sezione",
+          "sottosezioni": [
+            {
+              "titolo": "Sottosezione 1",
+              "descrizione": "Descrizione dettagliata del contenuto"
+            },
+            {
+              "titolo": "Sottosezione 2", 
+              "descrizione": "Descrizione dettagliata del contenuto"
+            }
+          ]
+        }
+      ],
+      "target_audience": "tecnico|non tecnico",
+      "stile_comunicazione": "formale|informale|tecnico|business"
+    }
+    ```

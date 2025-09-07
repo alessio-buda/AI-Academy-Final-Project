@@ -1,0 +1,8 @@
+```json
+{
+  "status": "APPROVED",
+  "improved_query": "Develop a comprehensive presentation for CrewAI, a framework for building AI applications using large language models (LLMs) and generative AI. The presentation should be structured into the following sections:\n1. Architectural Choices: Explain and justify the selected system architecture patterns and design decisions.\n2. Crew Diagram: Provide a clear diagram showing the components of CrewAI and how they interact.\n3. Practical Examples: Include real-world use cases and code snippets that demonstrate how to implement and use CrewAI.\n4. Critical Analysis: Evaluate the strengths, limitations, and potential areas for improvement of the framework.\nThe target audience is technical professionals with experience in AI and software architecture.",
+  "original_query": "{'project_description': 'CrewAI is a framework to build AI applications with LLMs and generative AI.', 'outline': 'Scelte architetturali, Diagramma della crew, Esempi pratici, Analisi critica.', 'audience': 'technical'}",
+  "improvements_made": "Translated Italian terms to English, expanded abbreviations (LLMs to large language models), structured the outline into clear numbered sections, added detail on content expectations, and specified the technical audience."
+}
+```

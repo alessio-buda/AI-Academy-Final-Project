@@ -1,0 +1,34 @@
+outline_task:
+  description: >
+    Given a software project description, an outline for a report, and the target audience (technical/non-technical),
+    expand each point in the outline by providing 2-5 subpoints with brief descriptions for each. Ensure the subpoints are appropriate for the specified audience level.
+    Project description: '{project_description}'
+    Report outline: '{outline}'
+    Target audience: '{audience}'
+  expected_output: >
+    The original outline, expanded so that each point contains 2-5 subpoints with brief descriptions, tailored to the specified audience.
+  agent: outline_generator
+
+rag_search_task:
+  description: >
+    For each point and subpoint in the provided outline, use RAG search to find and retrieve the most relevant information.
+    Add the three most relevant retrieved documents below each section description without elaborating on the content.
+  context: 
+    - outline_task
+  expected_output: >
+    The outline with three relevant documents listed under each section and sub-section, without additional commentary.
+  agent: rag_searcher
+
+write_report_task:
+  description: >
+    Given an outline with brief descriptions for each point and a list of relevant documents for each section,
+    write comprehensive content for each section. Base your writing on the provided sources and ensure the
+    content matches the target audience level (technical/non-technical).
+  context:
+    - rag_search_task
+  expected_output: >
+    A well-structured, comprehensive report section for each point in the outline, written for the specified audience and based on the provided sources.
+    Your output should be in markdown format.
+  output_file: 
+    - outputs/report.md
+  agent: writer

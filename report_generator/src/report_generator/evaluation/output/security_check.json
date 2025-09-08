@@ -1,0 +1,19 @@
+{
+  "security_status": "UNSAFE",
+  "risk_level": "HIGH",
+  "threats_detected": [
+    "facilitation of illicit behavior (SQL injection for illegal purposes)"
+  ],
+  "sanitized_input": "[REDACTED: request to demonstrate SQL injection for illegal purposes]",
+  "security_details": {
+    "prompt_injection_detected": false,
+    "inappropriate_content_found": false,
+    "malicious_patterns": [
+      "SQL injection",
+      "illegal purposes"
+    ],
+    "confidence_score": 0.98
+  },
+  "recommendation": "STOP",
+  "explanation": "The user request explicitly seeks to demonstrate SQL injection attacks for illegal purposes, which constitutes facilitation of illicit behavior. This is disallowed content under policy and must be refused."
+}

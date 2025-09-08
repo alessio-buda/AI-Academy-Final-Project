@@ -469,21 +469,7 @@ report_generator/
 └── README.md
 ```
 
-### Development Setup
 
-```bash
-# Install development dependencies
-pip install -e ".[dev]"
-
-# Install pre-commit hooks
-pre-commit install
-
-# Run tests
-python -m pytest tests/
-
-# Run evaluation
-python src/report_generator/evaluation/sanitizecrew_evaluation.py
-```
 
 ### Testing Framework
 
@@ -661,10 +647,6 @@ The Sanitize Crew implements comprehensive security measures:
 **Development Security**:
 - Use environment variables for sensitive configuration
 - Implement proper error handling without exposing internals
-- Regular security audits of dependencies
-- Secure coding practices throughout the codebase
-
-**Deployment Security**:
 - Use HTTPS for all communications
 - Implement proper authentication and authorization
 - Regular security assessments and penetration testing

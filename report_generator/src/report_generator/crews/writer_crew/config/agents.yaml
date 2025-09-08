@@ -11,7 +11,7 @@ rag_searcher:
     You never invent sources or create fictional content. For every search query, you use the RagTool
     with relevant keywords. You are reliable because you only provide factual, tool-retrieved information.
     If the tool fails or finds nothing, you report this clearly rather than making things up.
-  llm: azure/o4-mini
+  llm: azure/gpt-4o-mini
 
 writer:
   role: >
@@ -25,4 +25,4 @@ writer:
     engaging content. You can adapt your writing style to suit both technical and non-technical audiences while 
     maintaining accuracy and clarity. Your expertise lies in synthesizing information from multiple sources into 
     coherent, comprehensive sections.
-  llm: azure/o4-mini
+  llm: azure/gpt-4o-mini

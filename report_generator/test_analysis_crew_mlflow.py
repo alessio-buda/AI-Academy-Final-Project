@@ -1,22 +1,29 @@
 """
 MLflow Testing Module for AnalysisCrew Evaluation
 
-This module provides comprehensive testing and evaluation capabilities for CrewAI's AnalysisCrew
-using MLflow tracking. It implements both basic performance metrics and advanced LLM-as-a-Judge
-evaluation to assess the quality and relevance of generated content outlines.
+SISTEMA DI VALUTAZIONE INTELLIGENTE PER CREWAI
+==============================================
 
-The module integrates with Azure OpenAI services and provides automated tracking of:
-- Execution performance metrics
-- Content quality evaluation via LLM-based judging
-- Error handling and logging
-- MLflow experiment tracking and artifact management
+Questo modulo implementa un sistema completo di testing e valutazione per CrewAI
+che combina metriche di performance tradizionali con valutazione intelligente 
+basata su LLM (Large Language Models).
 
-Example:
-    Run the evaluation test:
-        $ python test_analysis_crew_mlflow.py
-        
-    Monitor results in MLflow UI:
-        http://127.0.0.1:5000
+ARCHITETTURA:
+1. ESECUZIONE: Testa la AnalysisCrew in isolamento
+2. VALUTAZIONE: Usa 2 approcci per misurare la qualità:
+   - LLM-as-a-Judge: Valutazione semantica della rilevanza (1-10)
+   - Keyword Coverage: Analisi della completezza degli argomenti (0-100%)
+3. TRACKING: Registra tutto su MLflow per monitoraggio e benchmark
+
+METRICHE TRACCIATE:
+- Performance: execution_time, execution_success
+- Qualità: llm_relevance_score, keyword_coverage_percentage  
+- Dettagli: keywords_found/total, tempi di valutazione
+
+TECNOLOGIE:
+- CrewAI: Framework multi-agent per generazione contenuti
+- Azure OpenAI: LLM per valutazione intelligente e estrazione keywords
+- MLflow: Tracking esperimenti e monitoraggio performance
 """
 
 import os
@@ -64,6 +71,148 @@ def _get_azure_openai_client():
         azure_endpoint=os.getenv("AZURE_API_BASE"),
         azure_deployment=os.getenv("MODEL")
     )
+
+
+def _extract_keywords_from_query(query: str) -> list:
+    """Extract important keywords from the original user query using LLM.
+    
+    Uses Azure OpenAI to intelligently identify the most important keywords,
+    technologies, and concepts from the user's request that should be covered
+    in the generated outline.
+    
+    Args:
+        query (str): The original user query/request.
+        
+    Returns:
+        list: List of important keywords that should appear in the outline.
+        
+    Example:
+        >>> keywords = _extract_keywords_from_query(
+        ...     "Crea docs per sistema inventario con API REST e React"
+        ... )
+        >>> print(keywords)
+        ['sistema di inventario', 'API REST', 'React', 'documentazione', 'gestione prodotti']
+    """
+    try:
+        client = _get_azure_openai_client()
+        
+        extraction_prompt = f"""
+TASK: Extract the most important keywords and concepts from this user request.
+
+USER REQUEST:
+"{query}"
+
+INSTRUCTIONS:
+- Identify the main subject/domain (e.g., "inventory system", "e-commerce platform")
+- Extract specific technologies mentioned (e.g., "API REST", "PostgreSQL", "React")
+- Find key functional requirements (e.g., "user management", "order processing", "reporting")
+- Include important technical concepts (e.g., "database", "web interface", "automation")
+- Return 5-8 most important keywords/phrases
+- Use the same language as the original request
+- Be specific but not too granular
+
+RESPONSE FORMAT: Return only a JSON array of strings
+Example: ["inventory management", "API REST", "PostgreSQL", "React", "product tracking", "order processing", "automated reports"]
+"""
+
+        response = client.chat.completions.create(
+            model=os.getenv("MODEL", "gpt-4o-mini"),
+            messages=[
+                {"role": "system", "content": "You are an expert at analyzing user requirements and extracting key concepts. Provide precise, relevant keywords."},
+                {"role": "user", "content": extraction_prompt}
+            ],
+            temperature=0.1,  # Low temperature for consistency
+            max_tokens=500    # Enough for keyword list
+        )
+        
+        # Parse the JSON response
+        keywords_text = response.choices[0].message.content.strip()
+        
+        # Clean up potential markdown wrapper
+        if keywords_text.startswith('```json'):
+            keywords_text = keywords_text.replace('```json', '').replace('```', '').strip()
+        elif keywords_text.startswith('```'):
+            keywords_text = keywords_text.replace('```', '').strip()
+            
+        # Parse JSON
+        try:
+            keywords = json.loads(keywords_text)
+            if isinstance(keywords, list) and all(isinstance(k, str) for k in keywords):
+                return keywords
+            else:
+                print(f"⚠️ LLM returned invalid format: {keywords_text}")
+                return []
+        except json.JSONDecodeError:
+            print(f"⚠️ LLM response is not valid JSON: {keywords_text}")
+            return []
+            
+    except Exception as e:
+        print(f"❌ Error during keyword extraction: {e}")
+        return []
+
+
+def _calculate_keyword_coverage(original_query: str, outline_content: str) -> dict:
+    """Calculate keyword coverage score between query and generated outline.
+    
+    Measures how well the generated outline covers the important keywords
+    and concepts from the original user request. Provides both overall
+    percentage and detailed breakdown of found/missing keywords.
+    
+    Args:
+        original_query (str): The original user request/query.
+        outline_content (str): The generated outline content as string.
+        
+    Returns:
+        dict: Dictionary containing:
+            - coverage_percentage (float): Overall coverage 0-100%
+            - total_keywords (int): Total number of keywords to find
+            - found_keywords (int): Number of keywords found
+            - found_keywords_list (list): List of keywords found in outline
+            - missing_keywords_list (list): List of keywords missing from outline
+            
+    Example:
+        >>> result = _calculate_keyword_coverage(
+        ...     "Crea sistema inventario con API REST",
+        ...     '{"title": "Sistema Inventario", "sections": [...]}'
+        ... )
+        >>> print(f"Coverage: {result['coverage_percentage']}%")
+        Coverage: 75.0%
+    """
+    # Estrai keywords dalla query originale
+    keywords = _extract_keywords_from_query(original_query)
+    
+    if not keywords:
+        return {
+            'coverage_percentage': 0.0,
+            'total_keywords': 0,
+            'found_keywords': 0,
+            'found_keywords_list': [],
+            'missing_keywords_list': []
+        }
+    
+    # Converti outline in lowercase per ricerca case-insensitive
+    outline_lower = outline_content.lower()
+    
+    # Trova keywords presenti nell'outline
+    found_keywords = []
+    missing_keywords = []
+    
+    for keyword in keywords:
+        if keyword.lower() in outline_lower:
+            found_keywords.append(keyword)
+        else:
+            missing_keywords.append(keyword)
+    
+    # Calcola percentuale di copertura
+    coverage_percentage = (len(found_keywords) / len(keywords)) * 100
+    
+    return {
+        'coverage_percentage': coverage_percentage,
+        'total_keywords': len(keywords),
+        'found_keywords': len(found_keywords),
+        'found_keywords_list': found_keywords,
+        'missing_keywords_list': missing_keywords
+    }
 
 
 def _evaluate_outline_relevance(original_query: str, outline_content: str) -> float:
@@ -178,6 +327,10 @@ def test_analysis_crew_with_mlflow():
         execution_time_seconds (float): Total crew execution duration
         llm_relevance_score (float): LLM-judged relevance score (1-10)
         judge_evaluation_time (float): Duration of LLM evaluation process
+        keyword_coverage_percentage (float): Percentage of keywords covered (0-100%)
+        keywords_total_count (int): Total number of keywords extracted from query
+        keywords_found_count (int): Number of keywords found in outline
+        coverage_analysis_time (float): Duration of keyword coverage analysis
         
     MLflow Artifacts:
         - Generated outline JSON files
@@ -261,24 +414,65 @@ def test_analysis_crew_with_mlflow():
                     
                     judge_time = time.perf_counter() - judge_start_time
                     
-                    # Registra le metriche
+                    # Registra le metriche LLM
                     mlflow.log_metric("llm_relevance_score", relevance_score)
                     mlflow.log_metric("judge_evaluation_time", judge_time)
                     
                     print(f"📊 Valutazione LLM completata in {judge_time:.2f}s")
                     print(f"🎯 Punteggio rilevanza: {relevance_score}/10")
                     
+                    # ==================== KEYWORD COVERAGE ANALYSIS ====================
+                    print("🔍 Avvio analisi copertura keywords...")
+                    coverage_start_time = time.perf_counter()
+                    
+                    # Calcola copertura keywords
+                    coverage_result = _calculate_keyword_coverage(
+                        original_query=test_input["improved_query"],
+                        outline_content=outline_content
+                    )
+                    
+                    coverage_time = time.perf_counter() - coverage_start_time
+                    
+                    # Registra metriche di copertura
+                    mlflow.log_metric("keyword_coverage_percentage", coverage_result['coverage_percentage'])
+                    mlflow.log_metric("keywords_total_count", coverage_result['total_keywords'])
+                    mlflow.log_metric("keywords_found_count", coverage_result['found_keywords'])
+                    mlflow.log_metric("coverage_analysis_time", coverage_time)
+                    
+                    # Log dettagli come tags per analisi
+                    if coverage_result['found_keywords_list']:
+                        mlflow.set_tag("found_keywords", ", ".join(coverage_result['found_keywords_list']))
+                    if coverage_result['missing_keywords_list']:
+                        mlflow.set_tag("missing_keywords", ", ".join(coverage_result['missing_keywords_list']))
+                    
+                    print(f"📈 Analisi copertura completata in {coverage_time:.2f}s")
+                    print(f"📊 Copertura keywords: {coverage_result['coverage_percentage']:.1f}% ({coverage_result['found_keywords']}/{coverage_result['total_keywords']})")
+                    if coverage_result['found_keywords_list']:
+                        print(f"   ✅ Trovate: {', '.join(coverage_result['found_keywords_list'])}")
+                    if coverage_result['missing_keywords_list']:
+                        print(f"   ❌ Mancanti: {', '.join(coverage_result['missing_keywords_list'])}")
+                    
                 except Exception as e:
                     print(f"❌ Errore durante valutazione: {e}")
                     mlflow.log_metric("llm_relevance_score", 0.0)
+                    mlflow.log_metric("keyword_coverage_percentage", 0.0)
                     mlflow.set_tag("judge_error", str(e))
             else:
                 print(f"❌ File scaletta non trovato: {outline_path}")
                 mlflow.log_metric("llm_relevance_score", 0.0)
+                mlflow.log_metric("keyword_coverage_percentage", 0.0)
                 mlflow.set_tag("judge_error", "outline_file_missing")
             
             print(f"✅ AnalysisCrew completata in {execution_time:.2f} secondi")
-            print(f"📊 Metriche registrate: execution_success=1, execution_time={execution_time:.2f}s, llm_relevance_score={relevance_score if 'relevance_score' in locals() else 0.0}")
+            
+            # Summary delle metriche registrate
+            relevance_score = locals().get('relevance_score', 0.0)
+            coverage_percentage = locals().get('coverage_result', {}).get('coverage_percentage', 0.0)
+            print(f"📊 Metriche registrate:")
+            print(f"   • execution_success: 1")
+            print(f"   • execution_time: {execution_time:.2f}s")
+            print(f"   • llm_relevance_score: {relevance_score}/10")
+            print(f"   • keyword_coverage: {coverage_percentage:.1f}%")
             
             mlflow.set_tag("status", "success")
             return result

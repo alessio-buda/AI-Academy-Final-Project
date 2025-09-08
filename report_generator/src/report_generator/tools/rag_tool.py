@@ -12,12 +12,9 @@ from .rag_qdrant_hybrid import rag_search
 class RagToolInput(BaseModel):
 	"""Input schema for ``RagTool``.
 
-	Parameters
-	----------
-	question : str
-		Question to answer using RAG search.
-	k : int
-		Number of documents to retrieve for context.
+	Args:
+		question (str): Question to answer using RAG search.
+		k (int): Number of documents to retrieve for context.
 	"""
 	question: str = Field(..., description="Question to answer using RAG search.")
 	k: int = Field(3, description="Number of documents to retrieve for context.")
@@ -25,10 +22,9 @@ class RagToolInput(BaseModel):
 class RagTool(BaseTool):
 	"""CrewAI tool that performs a simple RAG retrieval.
 
-	Notes
-	-----
-	The tool returns contexts as a mapping of ``source`` to text and does not
-	perform generation.
+	Note:
+		The tool returns contexts as a mapping of ``source`` to text and does not
+		perform generation.
 	"""
 
 	name: str = "RAG Search Tool"
@@ -42,22 +38,15 @@ class RagTool(BaseTool):
 	def _run(self, question: str, k: int) -> List[str]:
 		"""Run retrieval with the provided inputs.
 
-		Parameters
-		----------
-		question : str
-			The query to retrieve contexts for.
-		k : int
-			Number of contexts to retrieve.
+		Args:
+			question (str): The query to retrieve contexts for.
+			k (int): Number of contexts to retrieve.
 
-		Returns
-		-------
-		dict
-			Mapping of ``source`` to ``page_content``.
+		Returns:
+			dict: Mapping of ``source`` to ``page_content``.
 
-		Raises
-		------
-		ValueError
-			If ``question`` is empty.
+		Raises:
+			ValueError: If ``question`` is empty.
 		"""
 		if not question:
 			raise ValueError("Please provide a question for RAG search.")

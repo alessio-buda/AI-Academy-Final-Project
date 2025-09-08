@@ -307,8 +307,8 @@ def load_docs_from_directory(directory_path: str) -> List[Document]:
         print(f"Directory {directory_path} does not exist")
         return documents
     
-    # Get all files in directory
-    for file_path in directory.iterdir():
+    # Get all files recursively in directory and subdirectories
+    for file_path in directory.rglob('*'):
         if file_path.is_file():
             extension = file_path.suffix.lower()
             
@@ -316,25 +316,25 @@ def load_docs_from_directory(directory_path: str) -> List[Document]:
                 try:
                     pdf_docs = load_pdf(str(file_path))
                     documents.extend(pdf_docs)
-                    print(f"Loaded PDF: {file_path.name}")
+                    print(f"Loaded PDF: {file_path.relative_to(directory)}")
                 except Exception as e:
-                    print(f"Error loading PDF {file_path.name}: {e}")
+                    print(f"Error loading PDF {file_path.relative_to(directory)}: {e}")
                     
             elif extension in ['.md', '.markdown', '.mdx']:
                 try:
                     md_docs = load_md(str(file_path))
                     documents.extend(md_docs)
-                    print(f"Loaded Markdown: {file_path.name}")
+                    print(f"Loaded Markdown: {file_path.relative_to(directory)}")
                 except Exception as e:
-                    print(f"Error loading Markdown {file_path.name}: {e}")
+                    print(f"Error loading Markdown {file_path.relative_to(directory)}: {e}")
                     
             elif extension in ['.html', '.htm']:
                 try:
                     html_docs = load_html(str(file_path))
                     documents.extend(html_docs)
-                    print(f"Loaded HTML: {file_path.name}")
+                    print(f"Loaded HTML: {file_path.relative_to(directory)}")
                 except Exception as e:
-                    print(f"Error loading HTML {file_path.name}: {e}")
+                    print(f"Error loading HTML {file_path.relative_to(directory)}: {e}")
     
     print(f"Total documents loaded: {len(documents)}")
     return documents

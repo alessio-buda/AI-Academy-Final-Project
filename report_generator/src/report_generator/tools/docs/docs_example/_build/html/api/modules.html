@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; Game Builder Crew 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1cfeddc2" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="crew module" href="crew.html" />
+    <link rel="prev" title="Game Examples" href="../examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Game Builder Crew
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Game Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="crew.html">crew module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-overview">Module Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-reference">Quick Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#GameBuilderCrew"><code class="docutils literal notranslate"><span class="pre">GameBuilderCrew</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#GameBuilderCrew.crew"><code class="docutils literal notranslate"><span class="pre">GameBuilderCrew.crew()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#run"><code class="docutils literal notranslate"><span class="pre">run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#train"><code class="docutils literal notranslate"><span class="pre">train()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#type-definitions">Type Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-information">Version Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="crew.html">crew module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Game Builder Crew</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
+<p>This section provides comprehensive API documentation for all modules, classes, and functions in the Game Builder Crew system.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">API Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="crew.html">crew module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="crew.html#gamebuildercrew-class">GameBuilderCrew Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crew.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">main module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main.html#module-overview">Module Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#module-configuration">Module Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#integration-examples">Integration Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#testing-support">Testing Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="module-overview">
+<h2>Module Overview<a class="headerlink" href="#module-overview" title="Link to this heading"></a></h2>
+<p>The Game Builder Crew consists of the following main modules:</p>
+<p><strong>Core Modules:</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 30.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Module</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Key Components</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">crew.py</span></code></p></td>
+<td><p>Main orchestration</p></td>
+<td><p>GameBuilderCrew class, agents, tasks</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">main.py</span></code></p></td>
+<td><p>Entry points</p></td>
+<td><p>run(), train() functions</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></p></td>
+<td><p>Package setup</p></td>
+<td><p>Exports and version info</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Configuration Files:</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 30.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agents.yaml</span></code></p></td>
+<td><p>Agent definitions</p></td>
+<td><p>Roles, goals, backstories</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tasks.yaml</span></code></p></td>
+<td><p>Task specifications</p></td>
+<td><p>Descriptions, expected outputs</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gamedesign.yaml</span></code></p></td>
+<td><p>Game examples</p></td>
+<td><p>Pre-built game specifications</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="quick-reference">
+<h2>Quick Reference<a class="headerlink" href="#quick-reference" title="Link to this heading"></a></h2>
+<p><strong>Most Common Classes and Functions:</strong></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="GameBuilderCrew">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GameBuilderCrew</span></span><a class="headerlink" href="#GameBuilderCrew" title="Link to this definition"></a></dt>
+<dd><p>Main orchestrator class for the game building process.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="GameBuilderCrew.crew">
+<span class="sig-name descname"><span class="pre">crew</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Crew</span></span></span><a class="headerlink" href="#GameBuilderCrew.crew" title="Link to this definition"></a></dt>
+<dd><p>Returns the configured crew ready for execution.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#run" title="Link to this definition"></a></dt>
+<dd><p>Execute the game building process with default Snake game example.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_iterations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#train" title="Link to this definition"></a></dt>
+<dd><p>Train the crew using iterative learning.</p>
+</dd></dl>
+
+<p><strong>Configuration Access:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.crew</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameBuilderCrew</span>
+
+<span class="c1"># Initialize crew</span>
+<span class="n">crew</span> <span class="o">=</span> <span class="n">GameBuilderCrew</span><span class="p">()</span>
+
+<span class="c1"># Access individual agents</span>
+<span class="n">senior_agent</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">senior_engineer_agent</span><span class="p">()</span>
+<span class="n">qa_agent</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">qa_engineer_agent</span><span class="p">()</span>
+<span class="n">chief_agent</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">chief_qa_engineer_agent</span><span class="p">()</span>
+
+<span class="c1"># Access individual tasks</span>
+<span class="n">code_task</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">code_task</span><span class="p">()</span>
+<span class="n">review_task</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">review_task</span><span class="p">()</span>
+<span class="n">evaluate_task</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">evaluate_task</span><span class="p">()</span>
+
+<span class="c1"># Get complete crew</span>
+<span class="n">complete_crew</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Execution Patterns:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic execution</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.main</span><span class="w"> </span><span class="kn">import</span> <span class="n">run</span>
+<span class="n">run</span><span class="p">()</span>
+
+<span class="c1"># Custom execution</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.crew</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameBuilderCrew</span>
+<span class="n">crew</span> <span class="o">=</span> <span class="n">GameBuilderCrew</span><span class="p">()</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;game&#39;</span><span class="p">:</span> <span class="s1">&#39;Your game description here&#39;</span><span class="p">}</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span><span class="o">.</span><span class="n">kickoff</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="c1"># Training</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.main</span><span class="w"> </span><span class="kn">import</span> <span class="n">train</span>
+<span class="n">train</span><span class="p">(</span><span class="n">n_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;trained_model.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="type-definitions">
+<h2>Type Definitions<a class="headerlink" href="#type-definitions" title="Link to this heading"></a></h2>
+<p><strong>Common Types:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">crewai</span><span class="w"> </span><span class="kn">import</span> <span class="n">Agent</span><span class="p">,</span> <span class="n">Task</span><span class="p">,</span> <span class="n">Crew</span>
+
+<span class="c1"># Input type for crew execution</span>
+<span class="n">GameInputs</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+
+<span class="c1"># Configuration dictionaries</span>
+<span class="n">AgentConfig</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+<span class="n">TaskConfig</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+
+<span class="c1"># Function signatures</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">crew_function</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Crew</span><span class="p">:</span> <span class="o">...</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">agent_function</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Agent</span><span class="p">:</span> <span class="o">...</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">task_function</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Task</span><span class="p">:</span> <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="error-handling">
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading"></a></h2>
+<p><strong>Exception Hierarchy:</strong></p>
+<p>The system uses standard Python exceptions with specific handling:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configuration errors</span>
+<span class="ne">FileNotFoundError</span><span class="p">:</span> <span class="n">Configuration</span> <span class="n">files</span> <span class="n">missing</span>
+<span class="n">yaml</span><span class="o">.</span><span class="n">YAMLError</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">YAML</span> <span class="n">syntax</span>
+
+<span class="c1"># Execution errors</span>
+<span class="ne">Exception</span><span class="p">:</span> <span class="n">General</span> <span class="n">crew</span> <span class="n">execution</span> <span class="n">failures</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">parameter</span> <span class="n">values</span>
+<span class="ne">IndexError</span><span class="p">:</span> <span class="n">Missing</span> <span class="n">command</span> <span class="n">line</span> <span class="n">arguments</span>
+
+<span class="c1"># API errors</span>
+<span class="n">openai</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">APIError</span><span class="p">:</span> <span class="n">OpenAI</span> <span class="n">API</span> <span class="n">issues</span>
+<span class="n">openai</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">RateLimitError</span><span class="p">:</span> <span class="n">API</span> <span class="n">rate</span> <span class="n">limiting</span>
+<span class="n">openai</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">AuthenticationError</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">API</span> <span class="n">keys</span>
+</pre></div>
+</div>
+<p><strong>Error Handling Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.crew</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameBuilderCrew</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">crew</span> <span class="o">=</span> <span class="n">GameBuilderCrew</span><span class="p">()</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;game&#39;</span><span class="p">:</span> <span class="s1">&#39;Create a simple Snake game&#39;</span><span class="p">}</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span><span class="o">.</span><span class="n">kickoff</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Configuration file missing: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="n">yaml</span><span class="o">.</span><span class="n">YAMLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;YAML parsing error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Execution error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Log full traceback for debugging</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
+    <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="version-information">
+<h2>Version Information<a class="headerlink" href="#version-information" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">game_builder_crew</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Version: </span><span class="si">{</span><span class="n">game_builder_crew</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Author: </span><span class="si">{</span><span class="n">game_builder_crew</span><span class="o">.</span><span class="n">__author__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Compatibility:</strong></p>
+<ul class="simple">
+<li><p>Python: 3.8+</p></li>
+<li><p>CrewAI: 0.130.0+</p></li>
+<li><p>OpenAI: Latest</p></li>
+<li><p>Operating Systems: Windows, macOS, Linux</p></li>
+</ul>
+<p>For detailed documentation of each module, see the respective pages in this section.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../examples.html" class="btn btn-neutral float-left" title="Game Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="crew.html" class="btn btn-neutral float-right" title="crew module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, CrewAI Examples Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

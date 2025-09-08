@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation Guide &mdash; Game Builder Crew 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1cfeddc2" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick Start Guide" href="quickstart.html" />
+    <link rel="prev" title="Game Builder Crew Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Game Builder Crew
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-methods">Installation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method-1-using-poetry-recommended">Method 1: Using Poetry (Recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-2-using-pip-and-venv">Method 2: Using pip and venv</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-configuration">Environment Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verification">Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-installation-issues">Common Installation Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-issues">Network Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#development-installation">Development Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Game Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/crew.html">crew module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/main.html">main module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Game Builder Crew</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation-guide">
+<h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Link to this heading"></a></h1>
+<p>This guide will help you install and set up the Game Builder Crew system on your machine.</p>
+<section id="system-requirements">
+<h2>System Requirements<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h2>
+<p>Before installing the Game Builder Crew, ensure your system meets the following requirements:</p>
+<dl class="simple">
+<dt><strong>Python Version</strong></dt><dd><ul class="simple">
+<li><p>Python 3.8 or higher</p></li>
+<li><p>pip package manager</p></li>
+</ul>
+</dd>
+<dt><strong>Operating Systems</strong></dt><dd><ul class="simple">
+<li><p>Windows 10/11</p></li>
+<li><p>macOS 10.14 or later</p></li>
+<li><p>Linux (Ubuntu 18.04+ or equivalent)</p></li>
+</ul>
+</dd>
+<dt><strong>API Access</strong></dt><dd><ul class="simple">
+<li><p>OpenAI API key (for GPT-4o access)</p></li>
+<li><p>Optional: Serper API key (for web search capabilities)</p></li>
+</ul>
+</dd>
+<dt><strong>Memory Requirements</strong></dt><dd><ul class="simple">
+<li><p>Minimum: 4GB RAM</p></li>
+<li><p>Recommended: 8GB RAM or higher</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="installation-methods">
+<h2>Installation Methods<a class="headerlink" href="#installation-methods" title="Link to this heading"></a></h2>
+<section id="method-1-using-poetry-recommended">
+<h3>Method 1: Using Poetry (Recommended)<a class="headerlink" href="#method-1-using-poetry-recommended" title="Link to this heading"></a></h3>
+<p>Poetry is the recommended package manager for this project as it handles dependency management and virtual environments automatically.</p>
+<ol class="arabic">
+<li><p><strong>Install Poetry</strong></p>
+<p>If you don’t have Poetry installed, install it first:</p>
+</li>
+<li><p><strong>Clone the Repository</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/crewAIInc/crewAI-examples.git
+<span class="nb">cd</span><span class="w"> </span>crewAI-examples/crews/game-builder-crew
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install Dependencies</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>lock
+poetry<span class="w"> </span>install
+</pre></div>
+</div>
+</li>
+<li><p><strong>Activate Virtual Environment</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>shell
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="method-2-using-pip-and-venv">
+<h3>Method 2: Using pip and venv<a class="headerlink" href="#method-2-using-pip-and-venv" title="Link to this heading"></a></h3>
+<p>If you prefer using pip and virtual environments:</p>
+<ol class="arabic">
+<li><p><strong>Clone the Repository</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/crewAIInc/crewAI-examples.git
+<span class="nb">cd</span><span class="w"> </span>crewAI-examples/crews/game-builder-crew
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create Virtual Environment</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>game-builder-env
+</pre></div>
+</div>
+</li>
+<li><p><strong>Activate Virtual Environment</strong></p></li>
+<li><p><strong>Install Dependencies</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If requirements.txt doesn’t exist, you can generate it from pyproject.toml:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-f<span class="w"> </span>requirements.txt<span class="w"> </span>--output<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="environment-configuration">
+<h2>Environment Configuration<a class="headerlink" href="#environment-configuration" title="Link to this heading"></a></h2>
+<p>After installation, you need to configure environment variables for API access.</p>
+<ol class="arabic">
+<li><p><strong>Copy Environment Template</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+</pre></div>
+</div>
+</li>
+<li><p><strong>Configure API Keys</strong></p>
+<p>Edit the <cite>.env</cite> file with your API credentials:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># OpenAI API Configuration</span>
+<span class="nv">OPENAI_API_KEY</span><span class="o">=</span>your_openai_api_key_here
+<span class="nv">OPENAI_MODEL</span><span class="o">=</span>gpt-4o
+
+<span class="c1"># Optional: Serper API for web search</span>
+<span class="nv">SERPER_API_KEY</span><span class="o">=</span>your_serper_api_key_here
+
+<span class="c1"># Logging Configuration</span>
+<span class="nv">LOG_LEVEL</span><span class="o">=</span>INFO
+<span class="nv">CREW_VERBOSE</span><span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Obtain API Keys</strong></p>
+<dl class="simple">
+<dt><strong>OpenAI API Key:</strong></dt><dd><ol class="arabic simple">
+<li><p>Visit <a class="reference external" href="https://platform.openai.com/api-keys">OpenAI Platform</a></p></li>
+<li><p>Sign up or log in to your account</p></li>
+<li><p>Navigate to API Keys section</p></li>
+<li><p>Create a new secret key</p></li>
+<li><p>Copy the key to your <cite>.env</cite> file</p></li>
+</ol>
+</dd>
+<dt><strong>Serper API Key (Optional):</strong></dt><dd><ol class="arabic simple">
+<li><p>Visit <a class="reference external" href="https://serper.dev">Serper.dev</a></p></li>
+<li><p>Sign up for an account</p></li>
+<li><p>Get your API key from the dashboard</p></li>
+<li><p>Add it to your <cite>.env</cite> file</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+<section id="verification">
+<h2>Verification<a class="headerlink" href="#verification" title="Link to this heading"></a></h2>
+<p>To verify your installation is working correctly:</p>
+<ol class="arabic">
+<li><p><strong>Test Import</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;from game_builder_crew.crew import GameBuilderCrew; print(&#39;Installation successful!&#39;)&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Run Quick Test</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">from game_builder_crew.crew import GameBuilderCrew</span>
+<span class="s2">crew = GameBuilderCrew()</span>
+<span class="s2">print(&#39;Game Builder Crew initialized successfully!&#39;)</span>
+<span class="s2">&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Check Dependencies</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>show<span class="w"> </span>--tree
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="common-installation-issues">
+<h3>Common Installation Issues<a class="headerlink" href="#common-installation-issues" title="Link to this heading"></a></h3>
+<dl>
+<dt><strong>Poetry Not Found</strong></dt><dd><p>If you get “poetry: command not found”:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add Poetry to PATH (Linux/macOS)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+
+<span class="c1"># Restart your terminal or run:</span>
+<span class="nb">source</span><span class="w"> </span>~/.bashrc<span class="w">  </span><span class="c1"># or ~/.zshrc</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>Python Version Issues</strong></dt><dd><p>If you get Python version compatibility errors:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check Python version</span>
+python<span class="w"> </span>--version
+
+<span class="c1"># Use specific Python version with Poetry</span>
+poetry<span class="w"> </span>env<span class="w"> </span>use<span class="w"> </span>python3.8
+</pre></div>
+</div>
+</dd>
+<dt><strong>Dependency Conflicts</strong></dt><dd><p>If you encounter dependency conflicts:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clear Poetry cache</span>
+poetry<span class="w"> </span>cache<span class="w"> </span>clear<span class="w"> </span>pypi<span class="w"> </span>--all
+
+<span class="c1"># Reinstall dependencies</span>
+poetry<span class="w"> </span>install<span class="w"> </span>--no-cache
+</pre></div>
+</div>
+</dd>
+<dt><strong>Permission Errors</strong></dt><dd><p>On Unix systems, if you get permission errors:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install Poetry for user only</span>
+curl<span class="w"> </span>-sSL<span class="w"> </span>https://install.python-poetry.org<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-<span class="w"> </span>--user
+</pre></div>
+</div>
+</dd>
+<dt><strong>API Key Issues</strong></dt><dd><p>If you get authentication errors:</p>
+<ol class="arabic simple">
+<li><p>Verify your API key is correct</p></li>
+<li><p>Check if you have sufficient API credits</p></li>
+<li><p>Ensure the key has proper permissions</p></li>
+<li><p>Test the key with a simple API call</p></li>
+</ol>
+</dd>
+</dl>
+</section>
+<section id="network-issues">
+<h3>Network Issues<a class="headerlink" href="#network-issues" title="Link to this heading"></a></h3>
+<p>If you’re behind a corporate firewall:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configure Poetry to use proxy</span>
+poetry<span class="w"> </span>config<span class="w"> </span>http-basic.pypi<span class="w"> </span>username<span class="w"> </span>password
+poetry<span class="w"> </span>config<span class="w"> </span>repositories.pypi<span class="w"> </span>https://pypi.org/simple/
+</pre></div>
+</div>
+</section>
+</section>
+<section id="development-installation">
+<h2>Development Installation<a class="headerlink" href="#development-installation" title="Link to this heading"></a></h2>
+<p>For development purposes, you may want additional tools:</p>
+<ol class="arabic">
+<li><p><strong>Install Development Dependencies</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install<span class="w"> </span>--with<span class="w"> </span>dev
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install Pre-commit Hooks</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+</li>
+<li><p><strong>Run Tests</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>pytest
+</pre></div>
+</div>
+</li>
+<li><p><strong>Build Documentation</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs/sphinx
+poetry<span class="w"> </span>run<span class="w"> </span>sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span><span class="nb">source</span><span class="w"> </span>_build/html
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>After successful installation:</p>
+<ol class="arabic simple">
+<li><p>Read the <a class="reference internal" href="quickstart.html"><span class="doc">Quick Start Guide</span></a> guide</p></li>
+<li><p>Explore <a class="reference internal" href="usage.html"><span class="doc">Usage Guide</span></a> examples</p></li>
+<li><p>Check out the <a class="reference internal" href="api/modules.html"><span class="doc">API Reference</span></a> reference</p></li>
+<li><p>Join the community discussions</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Keep your dependencies updated regularly:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>update
+</pre></div>
+</div>
+</div>
+<p>For additional help, visit our <a class="reference external" href="https://github.com/crewAIInc/crewAI-examples">GitHub repository</a> or check the troubleshooting section.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Game Builder Crew Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quick Start Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, CrewAI Examples Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,740 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage Guide &mdash; Game Builder Crew 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1cfeddc2" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Game Examples" href="examples.html" />
+    <link rel="prev" title="Quick Start Guide" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Game Builder Crew
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-components">Core Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-the-system-architecture">Understanding the System Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-usage-patterns">Basic Usage Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pattern-1-direct-execution">Pattern 1: Direct Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pattern-2-using-predefined-examples">Pattern 2: Using Predefined Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pattern-3-batch-processing">Pattern 3: Batch Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-usage">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#custom-agent-configurations">Custom Agent Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-task-definitions">Custom Task Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-customization">Environment Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#game-specification-best-practices">Game Specification Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#writing-effective-game-descriptions">Writing Effective Game Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#domain-specific-guidelines">Domain-Specific Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-generated-code">Working with Generated Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-quality-assessment">Code Quality Assessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-enhancement-strategies">Code Enhancement Strategies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-generated-games">Testing Generated Games</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#training-and-improvement">Training and Improvement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#crew-training-process">Crew Training Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performance-monitoring">Performance Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-issues-and-solutions">Common Issues and Solutions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices-summary">Best Practices Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Game Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/crew.html">crew module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/main.html">main module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Game Builder Crew</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Usage Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usage-guide">
+<h1>Usage Guide<a class="headerlink" href="#usage-guide" title="Link to this heading"></a></h1>
+<p>This comprehensive guide covers all aspects of using the Game Builder Crew system effectively.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The Game Builder Crew operates through a sequential workflow of specialized AI agents:</p>
+</section>
+<section id="core-components">
+<h2>Core Components<a class="headerlink" href="#core-components" title="Link to this heading"></a></h2>
+<section id="understanding-the-system-architecture">
+<h3>Understanding the System Architecture<a class="headerlink" href="#understanding-the-system-architecture" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>Agents:</strong></dt><dd><ul class="simple">
+<li><p><strong>Senior Engineer Agent</strong>: Creates initial game code</p></li>
+<li><p><strong>QA Engineer Agent</strong>: Reviews and fixes code issues</p></li>
+<li><p><strong>Chief QA Engineer Agent</strong>: Ensures final quality and completeness</p></li>
+</ul>
+</dd>
+<dt><strong>Configuration Files:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">agents.yaml</span></code>: Agent personalities and capabilities</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tasks.yaml</span></code>: Task definitions and requirements</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gamedesign.yaml</span></code>: Pre-built game examples</p></li>
+</ul>
+</dd>
+<dt><strong>Input/Output:</strong></dt><dd><ul class="simple">
+<li><p><strong>Input</strong>: Detailed game specifications</p></li>
+<li><p><strong>Output</strong>: Complete, executable Python game code</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="basic-usage-patterns">
+<h2>Basic Usage Patterns<a class="headerlink" href="#basic-usage-patterns" title="Link to this heading"></a></h2>
+<section id="pattern-1-direct-execution">
+<h3>Pattern 1: Direct Execution<a class="headerlink" href="#pattern-1-direct-execution" title="Link to this heading"></a></h3>
+<p>The simplest way to use the system:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.crew</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameBuilderCrew</span>
+
+<span class="c1"># Initialize crew</span>
+<span class="n">crew</span> <span class="o">=</span> <span class="n">GameBuilderCrew</span><span class="p">()</span>
+
+<span class="c1"># Define game</span>
+<span class="n">game_spec</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Create a simple Snake game where:</span>
+<span class="s2">- Player controls snake with arrow keys</span>
+<span class="s2">- Snake grows when eating food</span>
+<span class="s2">- Game ends on collision with walls or self</span>
+<span class="s2">- Display current score</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># Generate game</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;game&#39;</span><span class="p">:</span> <span class="n">game_spec</span><span class="p">}</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span><span class="o">.</span><span class="n">kickoff</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="c1"># Save result</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;generated_snake_game.py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="pattern-2-using-predefined-examples">
+<h3>Pattern 2: Using Predefined Examples<a class="headerlink" href="#pattern-2-using-predefined-examples" title="Link to this heading"></a></h3>
+<p>Leverage the built-in game examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.crew</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameBuilderCrew</span>
+
+<span class="c1"># Load examples</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;src/game_builder_crew/config/gamedesign.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">examples</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="c1"># Available examples:</span>
+<span class="c1"># - example1_pacman: Detailed Pac-Man with ghost AI</span>
+<span class="c1"># - example2_pacman: Simplified Pac-Man variant</span>
+<span class="c1"># - example3_snake: Comprehensive Snake game</span>
+
+<span class="n">crew</span> <span class="o">=</span> <span class="n">GameBuilderCrew</span><span class="p">()</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;game&#39;</span><span class="p">:</span> <span class="n">examples</span><span class="p">[</span><span class="s1">&#39;example1_pacman&#39;</span><span class="p">]}</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span><span class="o">.</span><span class="n">kickoff</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="pattern-3-batch-processing">
+<h3>Pattern 3: Batch Processing<a class="headerlink" href="#pattern-3-batch-processing" title="Link to this heading"></a></h3>
+<p>Generate multiple games efficiently:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.crew</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameBuilderCrew</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="n">games_to_create</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;pong&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Classic Pong game with two paddles and ball physics&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;breakout&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Breakout game with paddle, ball, and destructible blocks&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;space_invaders&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Space Invaders with shooting mechanics and enemy waves&#39;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">crew</span> <span class="o">=</span> <span class="n">GameBuilderCrew</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">game</span> <span class="ow">in</span> <span class="n">games_to_create</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generating </span><span class="si">{</span><span class="n">game</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;game&#39;</span><span class="p">:</span> <span class="n">game</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]}</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span><span class="o">.</span><span class="n">kickoff</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+    <span class="c1"># Save each game</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;generated_</span><span class="si">{</span><span class="n">game</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.py&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="n">results</span><span class="p">[</span><span class="n">game</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">filename</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generated games:&quot;</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="advanced-usage">
+<h2>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Link to this heading"></a></h2>
+<section id="custom-agent-configurations">
+<h3>Custom Agent Configurations<a class="headerlink" href="#custom-agent-configurations" title="Link to this heading"></a></h3>
+<p>Modify agent behavior by editing configuration files:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># agents.yaml - Custom agent configuration</span>
+<span class="nt">senior_engineer_agent</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">    </span><span class="no">Expert Python Game Developer with focus on performance</span>
+<span class="w">  </span><span class="nt">goal</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">    </span><span class="no">Create optimized, well-documented game code using best practices</span>
+<span class="w">  </span><span class="nt">backstory</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">    </span><span class="no">You are a senior developer with 15+ years experience in game development.</span>
+<span class="w">    </span><span class="no">You specialize in creating efficient, maintainable code and always</span>
+<span class="w">    </span><span class="no">include comprehensive documentation and error handling.</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-task-definitions">
+<h3>Custom Task Definitions<a class="headerlink" href="#custom-task-definitions" title="Link to this heading"></a></h3>
+<p>Modify the development process by editing tasks:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># tasks.yaml - Enhanced code task</span>
+<span class="nt">code_task</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">    </span><span class="no">Create a Python game based on these specifications:</span>
+<span class="w">    </span><span class="no">{game}</span>
+
+<span class="w">    </span><span class="no">Additional Requirements:</span>
+<span class="w">    </span><span class="no">- Include comprehensive docstrings for all functions</span>
+<span class="w">    </span><span class="no">- Add type hints for all function parameters and returns</span>
+<span class="w">    </span><span class="no">- Implement proper error handling with try/catch blocks</span>
+<span class="w">    </span><span class="no">- Use object-oriented design principles</span>
+<span class="w">    </span><span class="no">- Include unit tests for core game functions</span>
+<span class="w">    </span><span class="no">- Optimize for 60 FPS performance</span>
+
+<span class="w">  </span><span class="nt">expected_output</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">    </span><span class="no">Complete Python game code with documentation, type hints, error handling,</span>
+<span class="w">    </span><span class="no">and performance optimizations. Include a separate test file.</span>
+</pre></div>
+</div>
+</section>
+<section id="environment-customization">
+<h3>Environment Customization<a class="headerlink" href="#environment-customization" title="Link to this heading"></a></h3>
+<p>Configure the system behavior through environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># .env file</span>
+<span class="nv">OPENAI_API_KEY</span><span class="o">=</span>your_key_here
+<span class="nv">OPENAI_MODEL</span><span class="o">=</span>gpt-4o<span class="w">                    </span><span class="c1"># AI model to use</span>
+<span class="nv">CREW_VERBOSE</span><span class="o">=</span><span class="nb">true</span><span class="w">                      </span><span class="c1"># Enable detailed logging</span>
+<span class="nv">MAX_ITERATIONS</span><span class="o">=</span><span class="m">5</span><span class="w">                       </span><span class="c1"># Maximum retry attempts</span>
+<span class="nv">TEMPERATURE</span><span class="o">=</span><span class="m">0</span>.1<span class="w">                        </span><span class="c1"># AI creativity level (0.0-1.0)</span>
+<span class="nv">MAX_TOKENS</span><span class="o">=</span><span class="m">4000</span><span class="w">                        </span><span class="c1"># Maximum response length</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="game-specification-best-practices">
+<h2>Game Specification Best Practices<a class="headerlink" href="#game-specification-best-practices" title="Link to this heading"></a></h2>
+<section id="writing-effective-game-descriptions">
+<h3>Writing Effective Game Descriptions<a class="headerlink" href="#writing-effective-game-descriptions" title="Link to this heading"></a></h3>
+<p><strong>Structure Your Requirements:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Game Title: [Clear, descriptive title]
+
+Game Type: [Genre/Category]
+
+Core Mechanics:
+- [Primary gameplay loop]
+- [Player actions and reactions]
+- [Win/lose conditions]
+
+Technical Requirements:
+- [Graphics library preferences]
+- [Performance targets]
+- [Platform compatibility]
+
+User Interface:
+- [Control scheme]
+- [Menu systems]
+- [Information display]
+
+Special Features:
+- [Unique gameplay elements]
+- [Advanced features]
+- [Easter eggs or bonuses]
+</pre></div>
+</div>
+<p><strong>Example: Comprehensive Game Specification</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Game Title: Advanced Tetris Clone
+
+Game Type: Puzzle/Arcade
+
+Core Mechanics:
+- Seven standard tetromino pieces fall from top of screen
+- Player can move pieces left/right and rotate them
+- Pieces lock in place when they hit bottom or other pieces
+- Complete horizontal lines are cleared and award points
+- Game speed increases every 10 lines cleared
+- Game ends when pieces reach the top of the play area
+
+Technical Requirements:
+- Use Pygame for graphics and sound
+- Maintain 60 FPS performance
+- 10x20 grid play area
+- Smooth piece rotation and movement
+- Compatible with Windows, macOS, and Linux
+
+User Interface:
+- Arrow keys for piece movement (left, right, down for soft drop)
+- Up arrow or Space for rotation
+- Escape key to pause/quit
+- Display current score, level, and lines cleared
+- Show next piece preview
+- Game over screen with restart option
+
+Special Features:
+- Line clearing animation with visual effects
+- Progressive difficulty with speed increase
+- High score persistence between sessions
+- Sound effects for piece placement and line clearing
+- Optional: Hold piece functionality
+- Optional: Ghost piece preview showing drop location
+</pre></div>
+</div>
+</section>
+<section id="domain-specific-guidelines">
+<h3>Domain-Specific Guidelines<a class="headerlink" href="#domain-specific-guidelines" title="Link to this heading"></a></h3>
+<p><strong>Arcade Games (Snake, Pac-Man, Pong)</strong></p>
+<p>Focus on:
+- Smooth, responsive controls
+- Collision detection accuracy
+- Score tracking and high scores
+- Game over and restart functionality</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Controls: Specify exact key mappings
+Physics: Describe movement speed and collision behavior
+Scoring: Define point values for different actions
+Difficulty: Explain how challenge increases over time
+</pre></div>
+</div>
+<p><strong>Puzzle Games (Tetris, Match-3, Sudoku)</strong></p>
+<p>Emphasize:
+- Grid-based mechanics
+- Rule validation
+- Move legality checking
+- Win condition detection</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Grid System: Dimensions and cell properties
+Rules: Explicit game rules and constraints
+Validation: How to check valid moves/states
+Solutions: Algorithm for checking win conditions
+</pre></div>
+</div>
+<p><strong>Strategy Games (Chess, Checkers, Tic-Tac-Toe)</strong></p>
+<p>Include:
+- Turn-based mechanics
+- Move validation
+- Game state management
+- AI opponent behavior</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Turn Management: How turns alternate between players
+Move Validation: Rules for legal moves
+Game States: How to detect check, checkmate, stalemate
+AI Difficulty: Specify AI intelligence level
+</pre></div>
+</div>
+</section>
+</section>
+<section id="working-with-generated-code">
+<h2>Working with Generated Code<a class="headerlink" href="#working-with-generated-code" title="Link to this heading"></a></h2>
+<section id="code-quality-assessment">
+<h3>Code Quality Assessment<a class="headerlink" href="#code-quality-assessment" title="Link to this heading"></a></h3>
+<p>The generated code typically includes:</p>
+<p><strong>✅ Standard Features:</strong>
+- Proper imports and dependencies
+- Main game loop structure
+- Event handling for user input
+- Basic error handling
+- Inline comments explaining logic</p>
+<p><strong>✅ Quality Indicators:</strong>
+- Object-oriented design patterns
+- Separation of concerns
+- Consistent naming conventions
+- Appropriate data structures
+- Performance considerations</p>
+<p><strong>⚠️ Areas to Review:</strong>
+- Edge case handling
+- Resource cleanup (file handles, network connections)
+- Memory management for long-running games
+- Platform-specific compatibility issues</p>
+</section>
+<section id="code-enhancement-strategies">
+<h3>Code Enhancement Strategies<a class="headerlink" href="#code-enhancement-strategies" title="Link to this heading"></a></h3>
+<p><strong>1. Performance Optimization</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add performance monitoring</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GameProfiler</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_times</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">end_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">frame_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame_time</span><span class="p">)</span>
+
+        <span class="c1"># Keep only last 60 frames</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_times</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">60</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">frame_times</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_fps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_times</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="n">avg_frame_time</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_times</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_times</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">avg_frame_time</span> <span class="k">if</span> <span class="n">avg_frame_time</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p><strong>2. Error Handling Enhancement</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Robust error handling wrapper</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">safe_game_execution</span><span class="p">(</span><span class="n">game_function</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">game_function</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">pygame</span><span class="o">.</span><span class="n">error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pygame error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Make sure Pygame is properly installed and audio/video systems are available&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Game interrupted by user&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
+        <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>3. Configuration Management</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Game configuration system</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GameConfig</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="o">=</span><span class="s1">&#39;game_config.json&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_file</span> <span class="o">=</span> <span class="n">config_file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_config</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;window_width&#39;</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
+            <span class="s1">&#39;window_height&#39;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+            <span class="s1">&#39;fps&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+            <span class="s1">&#39;sound_enabled&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s1">&#39;difficulty&#39;</span><span class="p">:</span> <span class="s1">&#39;medium&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;controls&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;up&#39;</span><span class="p">:</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;down&#39;</span><span class="p">:</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;left&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;right&#39;</span><span class="p">:</span> <span class="s1">&#39;d&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_config</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">{</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">default_config</span><span class="p">,</span> <span class="o">**</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)}</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_config</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-generated-games">
+<h3>Testing Generated Games<a class="headerlink" href="#testing-generated-games" title="Link to this heading"></a></h3>
+<p><strong>1. Functional Testing</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_game_functionality</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test basic game functions work correctly.&quot;&quot;&quot;</span>
+    <span class="c1"># Test game initialization</span>
+    <span class="n">game</span> <span class="o">=</span> <span class="n">YourGameClass</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">game</span><span class="o">.</span><span class="n">score</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="n">game</span><span class="o">.</span><span class="n">lives</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+    <span class="c1"># Test player movement</span>
+    <span class="n">initial_pos</span> <span class="o">=</span> <span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">position</span>
+    <span class="n">game</span><span class="o">.</span><span class="n">handle_input</span><span class="p">(</span><span class="s1">&#39;move_right&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">initial_pos</span><span class="o">.</span><span class="n">x</span>
+
+    <span class="c1"># Test collision detection</span>
+    <span class="c1"># ... more tests</span>
+</pre></div>
+</div>
+<p><strong>2. Performance Testing</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">benchmark_game_performance</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Measure game performance over specified duration.&quot;&quot;&quot;</span>
+    <span class="n">game</span> <span class="o">=</span> <span class="n">YourGameClass</span><span class="p">()</span>
+    <span class="n">frame_times</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">while</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span> <span class="o">&lt;</span> <span class="n">duration</span><span class="p">:</span>
+        <span class="n">frame_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="c1"># Simulate one game frame</span>
+        <span class="n">game</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="n">game</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+        <span class="n">frame_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">frame_start</span>
+        <span class="n">frame_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame_time</span><span class="p">)</span>
+
+    <span class="n">avg_fps</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">frame_times</span><span class="p">)</span>
+    <span class="n">min_fps</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">frame_times</span><span class="p">)</span>
+    <span class="n">max_fps</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="nb">min</span><span class="p">(</span><span class="n">frame_times</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average FPS: </span><span class="si">{</span><span class="n">avg_fps</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min FPS: </span><span class="si">{</span><span class="n">min_fps</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max FPS: </span><span class="si">{</span><span class="n">max_fps</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="training-and-improvement">
+<h2>Training and Improvement<a class="headerlink" href="#training-and-improvement" title="Link to this heading"></a></h2>
+<section id="crew-training-process">
+<h3>Crew Training Process<a class="headerlink" href="#crew-training-process" title="Link to this heading"></a></h3>
+<p>Improve the system’s performance through iterative training:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.main</span><span class="w"> </span><span class="kn">import</span> <span class="n">train</span>
+
+<span class="c1"># Basic training with 10 iterations</span>
+<span class="n">train</span><span class="p">(</span><span class="n">n_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;trained_model_v1.pkl&#39;</span><span class="p">)</span>
+
+<span class="c1"># Advanced training with custom parameters</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">advanced_training</span><span class="p">():</span>
+    <span class="n">training_configs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s1">&#39;iterations&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;example&#39;</span><span class="p">:</span> <span class="s1">&#39;example1_pacman&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;iterations&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;example&#39;</span><span class="p">:</span> <span class="s1">&#39;example2_pacman&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;iterations&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;example&#39;</span><span class="p">:</span> <span class="s1">&#39;example3_snake&#39;</span><span class="p">}</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">config</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">training_configs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training phase </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;example&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">train</span><span class="p">(</span>
+            <span class="n">n_iterations</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;iterations&#39;</span><span class="p">],</span>
+            <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;model_phase_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">.pkl&quot;</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="performance-monitoring">
+<h3>Performance Monitoring<a class="headerlink" href="#performance-monitoring" title="Link to this heading"></a></h3>
+<p>Track system performance and quality:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CrewPerformanceMonitor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;execution_times&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;code_quality_scores&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;success_rates&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;token_usage&#39;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">record_execution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">success</span><span class="p">,</span> <span class="n">tokens_used</span><span class="p">):</span>
+        <span class="n">execution_time</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;execution_times&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution_time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;success_rates&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">success</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;token_usage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tokens_used</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">report</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+            <span class="s1">&#39;avg_execution_time&#39;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;execution_times&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;execution_times&#39;</span><span class="p">]),</span>
+            <span class="s1">&#39;success_rate&#39;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;success_rates&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;success_rates&#39;</span><span class="p">]),</span>
+            <span class="s1">&#39;avg_token_usage&#39;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;token_usage&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;token_usage&#39;</span><span class="p">]),</span>
+            <span class="s1">&#39;total_executions&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;execution_times&#39;</span><span class="p">])</span>
+        <span class="p">}</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;performance_report.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">report</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">report</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="common-issues-and-solutions">
+<h3>Common Issues and Solutions<a class="headerlink" href="#common-issues-and-solutions" title="Link to this heading"></a></h3>
+<p><strong>Issue: Generated code has syntax errors</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution: Add syntax validation</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ast</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_python_syntax</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Syntax is valid&quot;</span>
+    <span class="k">except</span> <span class="ne">SyntaxError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Syntax error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># Use in your workflow</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span><span class="o">.</span><span class="n">kickoff</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">is_valid</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="n">validate_python_syntax</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">is_valid</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generated code has issues: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Issue: Game performance is poor</strong></p>
+<p>Solutions:
+1. Add performance requirements to game description
+2. Specify target FPS in technical requirements
+3. Request optimization techniques in the prompt</p>
+<p><strong>Issue: Missing game features</strong></p>
+<p>Solutions:
+1. Be more explicit in feature descriptions
+2. Include acceptance criteria
+3. Provide examples of expected behavior</p>
+<p><strong>Issue: Inconsistent code quality</strong></p>
+<p>Solutions:
+1. Train the crew with more iterations
+2. Enhance agent backstories with quality focus
+3. Add code review criteria to task descriptions</p>
+</section>
+</section>
+<section id="best-practices-summary">
+<h2>Best Practices Summary<a class="headerlink" href="#best-practices-summary" title="Link to this heading"></a></h2>
+<p><strong>For Game Specifications:</strong>
+- Write detailed, unambiguous requirements
+- Include technical constraints and preferences
+- Specify user interface and control schemes
+- Define win/lose conditions clearly
+- Include performance targets</p>
+<p><strong>For System Usage:</strong>
+- Start with simple games and increase complexity
+- Test generated code thoroughly before deployment
+- Monitor performance and quality metrics
+- Keep training data diverse and comprehensive
+- Document successful patterns for reuse</p>
+<p><strong>For Code Quality:</strong>
+- Always validate syntax before execution
+- Add error handling and logging
+- Include configuration management
+- Implement proper resource cleanup
+- Test across different platforms</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Explore <a class="reference internal" href="examples.html"><span class="doc">Game Examples</span></a> for more game creation scenarios</p></li>
+<li><p>Learn about <span class="xref std std-doc">development/extending</span> the system</p></li>
+<li><p>Review <a class="reference internal" href="api/modules.html"><span class="doc">API Reference</span></a> for advanced customization</p></li>
+<li><p>Join the community discussions for tips and tricks</p></li>
+</ul>
+<p>For additional help and advanced topics, refer to the <span class="xref std std-doc">development/architecture</span> guide.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick Start Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Game Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, CrewAI Examples Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

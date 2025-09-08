@@ -9,8 +9,41 @@ Prerequisites
 Before starting, ensure you have:
 
 - Python 3.10+ installed
-- OpenAI API key
+- `uv <https://docs.astral.sh/uv/>`_ package manager (install with: ``pip install uv``)
+- Azure OpenAI Service access
+- **Qdrant vector database server** running and accessible
 - Internet connection
+
+Qdrant Server Setup
+-------------------
+
+The system requires a Qdrant vector database server for RAG (Retrieval-Augmented Generation) functionality.
+
+**Option 1: Qdrant Cloud** (Recommended)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Visit `Qdrant Cloud <https://cloud.qdrant.io/>`_
+2. Sign up for a free account
+3. Create a new cluster
+4. Note your cluster URL and API key
+
+**Option 2: Local Qdrant Server**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Install and run Qdrant locally:
+
+.. code-block:: bash
+
+   # Using Docker (if you have Docker installed)
+   docker run -p 6333:6333 qdrant/qdrant
+   
+   # Or download and run Qdrant binary directly
+   # Visit: https://github.com/qdrant/qdrant/releases
+
+**Option 3: Remote Qdrant Server**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you have access to a remote Qdrant server, ensure it's accessible and you have the connection details.
 
 Basic Setup
 -----------
@@ -21,15 +54,42 @@ Basic Setup
 
       git clone https://github.com/alessio-buda/AI-Academy-Final-Project.git
       cd AI-Academy-Final-Project/report_generator
-      pip install -e .
+      uv sync
 
 2. **Set up environment**:
 
-   Create a `.env` file:
+   Copy the example environment file and configure it:
 
    .. code-block:: bash
 
-      OPENAI_API_KEY=your_api_key_here
+      cp .env.example .env
+
+   Then edit the `.env` file with your API keys:
+
+   .. code-block:: bash
+
+      # Model Configuration
+      MODEL=gpt-4
+      
+      # Azure API Configuration
+      AZURE_API_KEY=your_azure_api_key_here
+      AZURE_API_BASE=https://your-resource.openai.azure.com/
+      AZURE_API_VERSION=2024-02-15-preview
+      AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-ada-002
+      AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+      
+      # Azure OpenAI Configuration (Required)
+      AZURE_OPENAI_API_KEY=your_azure_openai_api_key_here
+      AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+      AZURE_OPENAI_API_VERSION=2024-02-15-preview
+      
+      # Qdrant Vector Database Configuration (Required)
+      QDRANT_URL=http://localhost:6333  # For local Qdrant
+      # QDRANT_URL=https://your-cluster.qdrant.io  # For Qdrant Cloud
+      # QDRANT_API_KEY=your_qdrant_api_key_here     # For Qdrant Cloud
+      
+      # Serper API for web search (Optional)
+      SERPER_API_KEY=your_serper_api_key_here
 
 3. **Run your first report**:
 

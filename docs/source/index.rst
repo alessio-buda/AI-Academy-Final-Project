@@ -68,27 +68,14 @@ Documentation Structure
 
 .. toctree::
    :maxdepth: 2
-   :caption: API Reference:
-
-   api/main
-   api/crews
-   api/tools
-   api/evaluation
-
-.. toctree::
-   :maxdepth: 2
    :caption: Examples:
 
    examples/basic_usage
-   examples/advanced_configuration
-   examples/custom_crews
 
 .. toctree::
    :maxdepth: 1
    :caption: Development:
 
-   development/contributing
-   development/testing
    development/evaluation
 
 Indices and tables

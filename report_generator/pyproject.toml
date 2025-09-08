@@ -12,6 +12,7 @@ dependencies = [
     "langchain-openai>=0.1.0",
     "langchain-qdrant>=0.2.0",
     "qdrant-client>=1.15.1",
+    "mlflow>=2.0.0",
 ]
 
 [project.scripts]

@@ -1,0 +1,14 @@
+{
+  "security_status": "SAFE",
+  "risk_level": "LOW",
+  "threats_detected": [],
+  "sanitized_input": "{'project_description': 'CrewAI is a framework to build AI applications with LLMs and generative AI.', 'outline': 'Scelte architetturali, Diagramma della crew, Esempi pratici, Analisi critica.', 'audience': 'technical'}",
+  "security_details": {
+    "prompt_injection_detected": false,
+    "inappropriate_content_found": false,
+    "malicious_patterns": [],
+    "confidence_score": 0.99
+  },
+  "recommendation": "PROCEED",
+  "explanation": "L'input fornito riguarda esclusivamente la descrizione di un progetto e la richiesta di un outline per presentazione. Non sono state rilevate tentativi di iniezione di prompt, contenuti inappropriati o pattern dannosi. Si può procedere in sicurezza con la generazione della guida."
+}

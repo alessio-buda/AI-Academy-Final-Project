@@ -1,0 +1,17 @@
+{
+  "breve_descrizione_del_progetto": "CrewAI è un framework per costruire applicazioni di intelligenza artificiale basate su grandi modelli di linguaggio (LLM) e generative AI. Offre componenti modulari per orchestrare workflow, gestire pipeline e monitorare le prestazioni dei modelli. L’obiettivo è semplificare e standardizzare lo sviluppo di soluzioni AI complesse.",
+  "obiettivi_principali": [
+    "Presentare le scelte architetturali e la tecnologia sottostante a CrewAI",
+    "Visualizzare la composizione del team e le interazioni tra i ruoli",
+    "Mostrare esempi pratici di casi d’uso e workflow reali",
+    "Eseguire un’analisi critica di punti di forza, limitazioni e possibili miglioramenti futuri"
+  ],
+  "componenti_chiave": [
+    "Architettura a microservizi per l’integrazione di LLM e AI generativa",
+    "Modulo di orchestrazione dei workflow e gestione delle pipeline",
+    "Strumenti di monitoraggio, logging e analisi delle prestazioni"
+  ],
+  "target_audience": "tecnico",
+  "complessita_tecnica": "alta",
+  "settore_applicativo": "Intelligenza Artificiale"
+}

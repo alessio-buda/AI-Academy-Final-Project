@@ -1,0 +1,8 @@
+```json
+{
+  "status": "APPROVED",
+  "improved_query": "Please create a detailed presentation outline for a technical audience introducing CrewAI, a framework for building AI applications using large language models (LLMs) and generative AI. The outline should include the following sections:\n1. Architectural design choices: explain the system components and technology stack\n2. Crew composition diagram: visualize team roles and interactions\n3. Practical examples: demonstrate real-world use cases and workflows\n4. Critical analysis: discuss strengths, limitations, and future improvements",
+  "original_query": "{'project_description': 'CrewAI is a framework to build AI applications with LLMs and generative AI.', 'outline': 'Scelte architetturali, Diagramma della crew, Esempi pratici, Analisi critica.', 'audience': 'technical'}",
+  "improvements_made": "Expanded abbreviations (LLMs), converted mixed-language list into a clear, numbered outline in English, rephrased into a natural-language request, clarified each section’s purpose, and explicitly targeted the technical audience."
+}
+```

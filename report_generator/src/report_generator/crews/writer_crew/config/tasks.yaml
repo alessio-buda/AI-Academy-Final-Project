@@ -3,8 +3,8 @@ rag_search_task:
     IMPORTANT: You MUST use the "RAG Search Tool" to retrieve information for each section in the outline.
     
     For each section and subsection in the provided outline:
-    1. Use the "RAG Search Tool" with relevant keywords related to that section
-    2. Report exactly what the tool returns
+    1. Use the "RAG Search Tool" with relevant keywords based on the section/subsection's description
+    2. Report exactly what the tool returns, adding the documents under the respective section
     3. If the tool returns no results, state: "No documents found for: [section name]"
     4. If there are errors, state: "Tool Error: [error description]"
     5. Do NOT invent or fabricate any sources or documents

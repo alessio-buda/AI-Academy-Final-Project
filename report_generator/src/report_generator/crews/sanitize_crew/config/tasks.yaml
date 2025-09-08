@@ -2,7 +2,7 @@ check_input_task:
   description: |
     Perform comprehensive security analysis on the user input: '{user_input}'
     
-    **CONTEXT**: This system creates presentation guides for projects. Users submit project descriptions to get structured Italian presentation outlines.
+    **CONTEXT**: This system creates presentation guides for projects. Users submit project descriptions to get structured presentation outlines.
     
     **SECURITY ANALYSIS GUIDELINES:**
     

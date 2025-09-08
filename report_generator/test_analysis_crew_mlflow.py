@@ -1,3 +1,24 @@
+"""
+MLflow Testing Module for AnalysisCrew Evaluation
+
+This module provides comprehensive testing and evaluation capabilities for CrewAI's AnalysisCrew
+using MLflow tracking. It implements both basic performance metrics and advanced LLM-as-a-Judge
+evaluation to assess the quality and relevance of generated content outlines.
+
+The module integrates with Azure OpenAI services and provides automated tracking of:
+- Execution performance metrics
+- Content quality evaluation via LLM-based judging
+- Error handling and logging
+- MLflow experiment tracking and artifact management
+
+Example:
+    Run the evaluation test:
+        $ python test_analysis_crew_mlflow.py
+        
+    Monitor results in MLflow UI:
+        http://127.0.0.1:5000
+"""
+
 import os
 import time
 import json
@@ -18,9 +39,24 @@ mlflow.set_experiment("AnalysisCrewExperiment") # esperimento dedicato alla Anal
 
 
 def _get_azure_openai_client():
-    """
-    Inizializza client Azure OpenAI usando le stesse credenziali di CrewAI.
-    Riusa la configurazione esistente dal file .env
+    """Initialize Azure OpenAI client using credentials in file .env.
+    
+    Creates an Azure OpenAI client instance by reusing the same configuration
+    and credentials that CrewAI uses, ensuring consistency across the system.
+    
+    Returns:
+        AzureOpenAI: Configured Azure OpenAI client instance ready for API calls.
+        
+    Raises:
+        ValueError: If required environment variables are missing.
+        ConnectionError: If Azure OpenAI endpoint is not reachable.
+        
+    Note:
+        Requires the following environment variables to be set:
+        - AZURE_API_KEY: Azure OpenAI API key
+        - AZURE_API_VERSION: API version (e.g., "2024-12-01-preview")
+        - AZURE_API_BASE: Azure endpoint URL
+        - MODEL: Model deployment name (e.g., "gpt-4o-mini")
     """
     return AzureOpenAI(
         api_key=os.getenv("AZURE_API_KEY"),
@@ -31,15 +67,40 @@ def _get_azure_openai_client():
 
 
 def _evaluate_outline_relevance(original_query: str, outline_content: str) -> float:
-    """
-    Usa LLM-as-a-Judge per valutare la rilevanza della scaletta rispetto alla richiesta originale.
+    """Evaluate outline relevance using LLM-as-a-Judge methodology.
+    
+    Uses Azure OpenAI to assess how well the generated outline matches the original
+    user query. The evaluation considers thematic coherence, technical completeness,
+    logical structure, and content relevance.
     
     Args:
-        original_query: La richiesta originale dell'utente
-        outline_content: Il contenuto della scaletta generata (JSON come string)
-    
+        original_query (str): The original user request/query that initiated the outline generation.
+        outline_content (str): The generated outline content in JSON string format.
+        
     Returns:
-        float: Punteggio da 1.0 a 10.0 che indica la rilevanza
+        float: Relevance score from 1.0 to 10.0 where:
+            - 1.0-3.0: Completely off-topic or irrelevant
+            - 4.0-6.0: Partially relevant, missing important elements  
+            - 7.0-8.0: Good relevance, covers most aspects
+            - 9.0-10.0: Perfectly relevant and comprehensive
+            - 0.0: Error occurred during evaluation
+            
+    Raises:
+        Exception: Captures and logs any errors during LLM evaluation, returns 0.0.
+        
+    Note:
+        - Uses low temperature (0.1) for consistent scoring
+        - Limited to 10 max tokens for efficient numeric responses
+        - Includes fallback scoring (5.0) for invalid LLM responses
+        - All errors are logged but don't interrupt the main evaluation flow
+        
+    Example:
+        >>> score = _evaluate_outline_relevance(
+        ...     "Create docs for inventory system with REST API",
+        ...     '{"title": "Inventory Management System", "sections": [...]}' 
+        ... )
+        >>> print(f"Relevance: {score}/10")
+        Relevance: 8.5/10
     """
     try:
         # Inizializza client Azure OpenAI
@@ -47,27 +108,27 @@ def _evaluate_outline_relevance(original_query: str, outline_content: str) -> fl
         
         # Costruisce il prompt per la valutazione
         evaluation_prompt = f"""
-COMPITO: Valuta la rilevanza di questa scaletta rispetto alla richiesta originale.
+TASK: Evaluate the relevance of this outline against the original request.
 
-RICHIESTA ORIGINALE:
+ORIGINAL REQUEST:
 "{original_query}"
 
-SCALETTA GENERATA:
+GENERATED OUTLINE:
 {outline_content}
 
-CRITERI DI VALUTAZIONE:
-1. Coerenza tematica: La scaletta tratta effettivamente l'argomento richiesto?
-2. Completezza tecnica: Include le tecnologie e componenti menzionati nella richiesta?
-3. Struttura logica: Le sezioni e sottosezioni hanno un flusso logico?
-4. Pertinenza dei contenuti: Ogni sezione è utile per l'obiettivo della richiesta?
+EVALUATION CRITERIA:
+1. Thematic coherence: Does the outline effectively address the requested topic?
+2. Technical completeness: Does it include the technologies and components mentioned in the request?
+3. Logical structure: Do the sections and subsections have a logical flow?
+4. Content relevance: Is each section useful for achieving the request's objective?
 
-SCALA DI VALUTAZIONE:
-- 1-3: Completamente fuori tema o irrilevante
-- 4-6: Parzialmente rilevante, mancano elementi importanti
-- 7-8: Buona rilevanza, cubre la maggior parte degli aspetti
-- 9-10: Perfettamente inerente e completa
+EVALUATION SCALE:
+- 1-3: Completely off-topic or irrelevant
+- 4-6: Partially relevant, missing important elements
+- 7-8: Good relevance, covers most aspects
+- 9-10: Perfectly relevant and comprehensive
 
-RISPOSTA: Fornisci SOLO un numero da 1 a 10 (es: 8)
+RESPONSE: Provide ONLY a number from 1 to 10 (e.g.: 8)
 """
 
         # Chiama Azure OpenAI per la valutazione
@@ -99,12 +160,51 @@ RISPOSTA: Fornisci SOLO un numero da 1 a 10 (es: 8)
 
 
 def test_analysis_crew_with_mlflow():
-    """
-    Test semplificato della AnalysisCrew con tracking MLflow basilare.
+    """Execute comprehensive AnalysisCrew testing with MLflow tracking and LLM evaluation.
     
-    Traccia solo:
-    - execution_success: se funziona (1) o no (0)
-    - execution_time_seconds: quanto tempo ci mette
+    Performs an isolated test of the AnalysisCrew by simulating input from SanitizeCrew
+    and measuring both performance metrics and content quality through LLM-as-a-Judge
+    evaluation. All metrics and artifacts are automatically tracked in MLflow.
+    
+    The test workflow includes:
+    1. Crew execution with simulated input
+    2. Performance metrics collection (execution time, success rate)
+    3. LLM-based relevance evaluation of generated outline
+    4. MLflow logging of all metrics and artifacts
+    5. Comprehensive error handling and logging
+    
+    Tracked Metrics:
+        execution_success (int): Binary success indicator (1=success, 0=failure)
+        execution_time_seconds (float): Total crew execution duration
+        llm_relevance_score (float): LLM-judged relevance score (1-10)
+        judge_evaluation_time (float): Duration of LLM evaluation process
+        
+    MLflow Artifacts:
+        - Generated outline JSON files
+        - Error logs (if any failures occur)
+        - Execution metadata and timestamps
+        
+    Returns:
+        Any: The raw result object from CrewAI's kickoff() method, containing
+             the final output of the AnalysisCrew execution.
+             
+    Raises:
+        Exception: Re-raises any exceptions from crew execution after logging
+                  them to MLflow with appropriate error metrics and tags.
+                  
+    Note:
+        - Requires MLflow server running on http://127.0.0.1:5000
+        - Uses predefined test input simulating inventory management system request
+        - Automatically handles markdown wrapper cleanup in JSON outputs
+        - All errors are logged to MLflow before re-raising
+        
+    Example:
+        >>> result = test_analysis_crew_with_mlflow()
+        🔍 Start AnalysisCrew...
+        🤖 Start valutazione LLM-as-a-Judge...
+        📊 Evaluation LLM completed in 2.34s
+        🎯 Score relevance: 8.5/10
+        ✅ AnalysisCrew completed in 15.67 secondi
     """
     
     # Input di test simulato (normalmente arriverebbe da SanitizeCrew)

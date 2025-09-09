@@ -1,29 +1,56 @@
 """
 MLflow Testing Module for AnalysisCrew Evaluation
 
-SISTEMA DI VALUTAZIONE INTELLIGENTE PER CREWAI
-==============================================
+This module provides comprehensive testing and evaluation capabilities for CrewAI's AnalysisCrew
+using MLflow tracking and automated batch testing. It implements both basic performance metrics 
+and advanced LLM-as-a-Judge evaluation to assess the quality and relevance of generated content outlines.
 
-Questo modulo implementa un sistema completo di testing e valutazione per CrewAI
-che combina metriche di performance tradizionali con valutazione intelligente 
-basata su LLM (Large Language Models).
+The module integrates with Azure OpenAI services and provides automated tracking of:
+- Execution performance metrics (timing, success rates)
+- Content quality evaluation via LLM-based judging (1-10 relevance scoring)
+- Keyword coverage analysis with intelligent extraction
+- Error handling and comprehensive logging
+- MLflow experiment tracking and artifact management
+- Automated batch testing with multiple queries
+- Structured output generation to text files for analysis
 
-ARCHITETTURA:
-1. ESECUZIONE: Testa la AnalysisCrew in isolamento
-2. VALUTAZIONE: Usa 2 approcci per misurare la qualità:
-   - LLM-as-a-Judge: Valutazione semantica della rilevanza (1-10)
-   - Keyword Coverage: Analisi della completezza degli argomenti (0-100%)
-3. TRACKING: Registra tutto su MLflow per monitoraggio e benchmark
+Key Features:
+- **Single Test Mode**: Execute individual AnalysisCrew evaluations with detailed metrics
+- **Batch Testing**: Automatically run multiple test queries and collect aggregated results
+- **LLM-as-a-Judge**: Uses Azure OpenAI to evaluate outline relevance and quality
+- **Keyword Coverage**: Intelligent extraction and matching of key concepts from queries
+- **MLflow Integration**: Complete experiment tracking with metrics, parameters, and artifacts
+- **File Output**: Structured summary files for manual analysis and comparison
+- **Error Resilience**: Robust error handling that preserves partial results
 
-METRICHE TRACCIATE:
-- Performance: execution_time, execution_success
-- Qualità: llm_relevance_score, keyword_coverage_percentage  
-- Dettagli: keywords_found/total, tempi di valutazione
+Output Files:
+- MLflow experiments: Detailed tracking in web UI (http://127.0.0.1:5000)
+- test_results_summary.txt: Formatted text file with all test metrics and statistics
+- generated_outline.json: Individual outline artifacts for each test
 
-TECNOLOGIE:
-- CrewAI: Framework multi-agent per generazione contenuti
-- Azure OpenAI: LLM per valutazione intelligente e estrazione keywords
-- MLflow: Tracking esperimenti e monitoraggio performance
+Example Usage:
+    Run batch evaluation:
+        $ python test_analysis_crew_mlflow.py
+        
+    Monitor results in MLflow UI:
+        http://127.0.0.1:5000
+        
+    Review summary:
+        Open test_results_summary.txt for formatted results
+        
+Test Metrics Tracked:
+- execution_CrewAnalysis_time_seconds: Crew execution duration
+- execution_crew_success: Binary success indicator (1/0)
+- llm_relevance_score_outline_for_user_query: LLM-judged relevance (1-10)
+- keyword_coverage_percentage: Percentage of key concepts covered (0-100%)
+- judge_evaluation_time: Duration of LLM evaluation process
+- keywords_total_count/found_count: Keyword extraction and matching statistics
+- coverage_analysis_time: Duration of keyword analysis
+
+Dependencies:
+- MLflow server running on localhost:5000
+- Azure OpenAI credentials configured in .env
+- CrewAI AnalysisCrew properly configured
 """
 
 import os
@@ -35,7 +62,7 @@ import mlflow
 from dotenv import load_dotenv
 from openai import AzureOpenAI
 
-from report_generator.crews.analysis_crew.analysis_crew import AnalysisCrew
+from ..crews.analysis_crew.analysis_crew import AnalysisCrew
 
 # Carica variabili d'ambiente
 load_dotenv()
@@ -116,7 +143,7 @@ Example: ["inventory management", "API REST", "PostgreSQL", "React", "product tr
 """
 
         response = client.chat.completions.create(
-            model=os.getenv("MODEL", "o4-mini"),
+            model=os.getenv("MODEL", "gpt-4o-mini"),
             messages=[
                 {"role": "system", "content": "You are an expert at analyzing user requirements and extracting key concepts. Provide precise, relevant keywords."},
                 {"role": "user", "content": extraction_prompt}
@@ -282,7 +309,7 @@ RESPONSE: Provide ONLY a number from 1 to 10 (e.g.: 8)
 
         # Chiama Azure OpenAI per la valutazione
         response = client.chat.completions.create(
-            model=os.getenv("MODEL", "o4-mini"),  # Usa stesso modello di CrewAI
+            model=os.getenv("MODEL", "gpt-4o-mini"),  # Usa stesso modello di CrewAI
             messages=[
                 {"role": "system", "content": "Sei un esperto valutatore di contenuti. Fornisci valutazioni precise e obiettive."},
                 {"role": "user", "content": evaluation_prompt}
@@ -308,22 +335,23 @@ RESPONSE: Provide ONLY a number from 1 to 10 (e.g.: 8)
         return 0.0  # Punteggio di errore
 
 
-def test_analysis_crew_with_mlflow():
+def test_analysis_crew_with_mlflow(query: str):
     """Execute comprehensive AnalysisCrew testing with MLflow tracking and LLM evaluation.
     
     Performs an isolated test of the AnalysisCrew by simulating input from SanitizeCrew
     and measuring both performance metrics and content quality through LLM-as-a-Judge
-    evaluation. All metrics and artifacts are automatically tracked in MLflow and
-    saved to timestamped text files for easy review.
+    evaluation. All metrics and artifacts are automatically tracked in MLflow.
     
     The test workflow includes:
     1. Crew execution with simulated input
     2. Performance metrics collection (execution time, success rate)
     3. LLM-based relevance evaluation of generated outline
-    4. Keyword coverage analysis
-    5. MLflow logging of all metrics and artifacts
-    6. Text file output with detailed scores and analysis
-    7. Comprehensive error handling and logging
+    4. MLflow logging of all metrics and artifacts
+    5. Comprehensive error handling and logging
+    
+    Args:
+        query (str): The user query/request to be processed by AnalysisCrew.
+            This will be passed as "improved_query" to simulate SanitizeCrew output.
     
     Tracked Metrics:
         execution_success (int): Binary success indicator (1=success, 0=failure)
@@ -337,47 +365,45 @@ def test_analysis_crew_with_mlflow():
         
     MLflow Artifacts:
         - Generated outline JSON files
-        - Detailed scores text files (success and error cases)
         - Error logs (if any failures occur)
         - Execution metadata and timestamps
         
-    Text File Outputs:
-        - analysis_crew_scores_YYYYMMDD_HHMMSS.txt: Detailed evaluation report with:
-          * Performance metrics (execution times, success status)
-          * Quality metrics (LLM relevance score, keyword coverage)
-          * Found/missing keywords breakdown
-          * Overall assessment and recommendations
-          * Complete MLflow metric values
-        - analysis_crew_error_scores_YYYYMMDD_HHMMSS.txt: Error report for failed runs
-        
     Returns:
-        Any: The raw result object from CrewAI's kickoff() method, containing
-             the final output of the AnalysisCrew execution.
+        dict: Comprehensive metrics dictionary containing all test results including:
+            - query_input: Original user query
+            - execution_CrewAnalysis_time_seconds: Crew execution time
+            - execution_crew_success: Success/failure indicator (1/0)
+            - llm_relevance_score_outline_for_user_query: LLM relevance score (1-10)
+            - keyword_coverage_percentage: Coverage of important keywords (0-100%)
+            - found_keywords/missing_keywords: Lists of matched/unmatched keywords
+            - status: Overall test status ('success', 'failed', 'exception')
              
     Raises:
-        Exception: Re-raises any exceptions from crew execution after logging
-                  them to MLflow and saving error details to text file.
+        Exception: Captures and logs any exceptions from crew execution but returns
+                  error metrics dictionary instead of re-raising exceptions.
                   
     Note:
         - Requires MLflow server running on http://127.0.0.1:5000
-        - Uses predefined test input simulating inventory management system request
         - Automatically handles markdown wrapper cleanup in JSON outputs
-        - All errors are logged to MLflow and saved to text files before re-raising
-        - Text files are saved to 'evaluation_output/' directory
+        - All errors are logged to MLflow and returned in metrics dictionary
+        - Function designed for both single tests and batch processing
         
     Example:
-        >>> result = test_analysis_crew_with_mlflow()
-        🔍 Start AnalysisCrew...
-        🤖 Start valutazione LLM-as-a-Judge...
-        📊 Evaluation LLM completed in 2.34s
-        🎯 Score relevance: 8.5/10
-        ✅ AnalysisCrew completed in 15.67 secondi
-        💾 Scores saved to: evaluation_output/analysis_crew_scores_20250908_143022.txt
+        >>> metrics = test_analysis_crew_with_mlflow(
+        ...     "Create docs for inventory system with REST API"
+        ... )
+        🔍 Avvio AnalysisCrew...
+        🤖 Avvio valutazione LLM-as-a-Judge...
+        📊 Valutazione LLM completata in 2.34s
+        🎯 Punteggio rilevanza: 8.5/10
+        ✅ AnalysisCrew completata in 15.67 secondi
+        >>> print(f"Success: {metrics['execution_crew_success']}")
+        Success: 1
     """
     
     # Input di test simulato (normalmente arriverebbe da SanitizeCrew)
     test_input = {
-        "improved_query": "Crea una docs per un sistema di gestione inventario con API REST, database PostgreSQL e interfaccia web React. Il sistema deve permettere di tracciare prodotti, gestire ordini e generare report automatici."
+        "improved_query":  query
     }
     
     with mlflow.start_run(run_name="AnalysisCrew_Simple_Test"):
@@ -385,6 +411,10 @@ def test_analysis_crew_with_mlflow():
         mlflow.set_tag("crew_name", "AnalysisCrew")
         mlflow.set_tag("test_type", "simple_test")
         mlflow.set_tag("timestamp", datetime.utcnow().isoformat())
+        
+        # Log della query utente come parametro
+        mlflow.log_param("user_query", test_input["improved_query"])
+        mlflow.log_param("query_length", len(test_input["improved_query"]))
         
         # ==================== ESECUZIONE CREW ====================
         print("🔍 Avvio AnalysisCrew...")
@@ -401,8 +431,8 @@ def test_analysis_crew_with_mlflow():
             execution_time = time.perf_counter() - start_time
             
             # ==================== METRICHE ESSENZIALI ====================
-            mlflow.log_metric("execution_time_seconds", execution_time)
-            mlflow.log_metric("execution_success", 1)
+            mlflow.log_metric("execution_CrewAnalysis_time_seconds", execution_time)
+            mlflow.log_metric("execution_crew_success", 1)
             
             # ==================== LLM-AS-A-JUDGE VALUTAZIONE ====================
             print("🤖 Avvio valutazione LLM-as-a-Judge...")
@@ -430,8 +460,11 @@ def test_analysis_crew_with_mlflow():
                     judge_time = time.perf_counter() - judge_start_time
                     
                     # Registra le metriche LLM
-                    mlflow.log_metric("llm_relevance_score", relevance_score)
+                    mlflow.log_metric("llm_relevance_score_outline_for_user_query", relevance_score)
                     mlflow.log_metric("judge_evaluation_time", judge_time)
+                    
+                    # Salva la scaletta come artifact MLflow
+                    mlflow.log_text(outline_content, "generated_outline.json")
                     
                     print(f"📊 Valutazione LLM completata in {judge_time:.2f}s")
                     print(f"🎯 Punteggio rilevanza: {relevance_score}/10")
@@ -449,9 +482,9 @@ def test_analysis_crew_with_mlflow():
                     coverage_time = time.perf_counter() - coverage_start_time
                     
                     # Registra metriche di copertura
-                    mlflow.log_metric("keyword_coverage_percentage", coverage_result['coverage_percentage'])
                     mlflow.log_metric("keywords_total_count", coverage_result['total_keywords'])
                     mlflow.log_metric("keywords_found_count", coverage_result['found_keywords'])
+                    mlflow.log_metric("keyword_coverage_percentage", coverage_result['coverage_percentage'])
                     mlflow.log_metric("coverage_analysis_time", coverage_time)
                     
                     # Log dettagli come tags per analisi
@@ -482,113 +515,39 @@ def test_analysis_crew_with_mlflow():
             
             # Summary delle metriche registrate
             relevance_score = locals().get('relevance_score', 0.0)
-            coverage_result = locals().get('coverage_result', {})
-            coverage_percentage = coverage_result.get('coverage_percentage', 0.0)
-            judge_time = locals().get('judge_time', 0.0)
-            coverage_time = locals().get('coverage_time', 0.0)
-            
+            coverage_percentage = locals().get('coverage_result', {}).get('coverage_percentage', 0.0)
             print(f"📊 Metriche registrate:")
             print(f"   • execution_success: 1")
             print(f"   • execution_time: {execution_time:.2f}s")
             print(f"   • llm_relevance_score: {relevance_score}/10")
             print(f"   • keyword_coverage: {coverage_percentage:.1f}%")
             
-            # ==================== SAVE SCORES TO TEXT FILE ====================
-            # Create evaluation_output directory if it doesn't exist
-            output_dir = "evaluation_output"
-            os.makedirs(output_dir, exist_ok=True)
-            
-            # Generate timestamped filename
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            scores_file = os.path.join(output_dir, f"analysis_crew_scores_{timestamp}.txt")
-            
-            try:
-                with open(scores_file, 'w', encoding='utf-8') as f:
-                    f.write("=" * 80 + "\n")
-                    f.write("ANALYSIS CREW EVALUATION SCORES\n")
-                    f.write("=" * 80 + "\n")
-                    f.write(f"Timestamp: {datetime.now().isoformat()}\n")
-                    f.write(f"Test Input Query: {test_input['improved_query']}\n")
-                    f.write("=" * 80 + "\n\n")
-                    
-                    f.write("PERFORMANCE METRICS:\n")
-                    f.write("-" * 40 + "\n")
-                    f.write(f"Execution Success: {'✅ SUCCESS' if True else '❌ FAILED'}\n")
-                    f.write(f"Execution Time: {execution_time:.3f} seconds\n")
-                    f.write(f"Judge Evaluation Time: {judge_time:.3f} seconds\n")
-                    f.write(f"Coverage Analysis Time: {coverage_time:.3f} seconds\n")
-                    f.write(f"Total Evaluation Time: {execution_time + judge_time + coverage_time:.3f} seconds\n\n")
-                    
-                    f.write("QUALITY METRICS:\n")
-                    f.write("-" * 40 + "\n")
-                    f.write(f"LLM Relevance Score: {relevance_score:.2f}/10.0\n")
-                    f.write(f"Keyword Coverage: {coverage_percentage:.1f}%\n")
-                    f.write(f"Keywords Found: {coverage_result.get('found_keywords', 0)}/{coverage_result.get('total_keywords', 0)}\n\n")
-                    
-                    if coverage_result.get('found_keywords_list'):
-                        f.write("KEYWORDS FOUND:\n")
-                        f.write("-" * 20 + "\n")
-                        for keyword in coverage_result['found_keywords_list']:
-                            f.write(f"✅ {keyword}\n")
-                        f.write("\n")
-                    
-                    if coverage_result.get('missing_keywords_list'):
-                        f.write("KEYWORDS MISSING:\n")
-                        f.write("-" * 20 + "\n")
-                        for keyword in coverage_result['missing_keywords_list']:
-                            f.write(f"❌ {keyword}\n")
-                        f.write("\n")
-                    
-                    f.write("EVALUATION SUMMARY:\n")
-                    f.write("-" * 40 + "\n")
-                    
-                    # Overall assessment
-                    if relevance_score >= 9.0 and coverage_percentage >= 80:
-                        overall_assessment = "🌟 EXCELLENT"
-                    elif relevance_score >= 7.0 and coverage_percentage >= 60:
-                        overall_assessment = "✅ GOOD"
-                    elif relevance_score >= 5.0 and coverage_percentage >= 40:
-                        overall_assessment = "⚠️ FAIR"
-                    else:
-                        overall_assessment = "❌ POOR"
-                    
-                    f.write(f"Overall Assessment: {overall_assessment}\n")
-                    f.write(f"Relevance Level: {'High' if relevance_score >= 7 else 'Medium' if relevance_score >= 4 else 'Low'}\n")
-                    f.write(f"Coverage Level: {'High' if coverage_percentage >= 70 else 'Medium' if coverage_percentage >= 40 else 'Low'}\n")
-                    f.write(f"Performance Level: {'Fast' if execution_time < 30 else 'Medium' if execution_time < 60 else 'Slow'}\n\n")
-                    
-                    f.write("DETAILED METRICS (for MLflow):\n")
-                    f.write("-" * 40 + "\n")
-                    f.write(f"execution_success: 1\n")
-                    f.write(f"execution_time_seconds: {execution_time:.6f}\n")
-                    f.write(f"llm_relevance_score: {relevance_score:.6f}\n")
-                    f.write(f"judge_evaluation_time: {judge_time:.6f}\n")
-                    f.write(f"keyword_coverage_percentage: {coverage_percentage:.6f}\n")
-                    f.write(f"keywords_total_count: {coverage_result.get('total_keywords', 0)}\n")
-                    f.write(f"keywords_found_count: {coverage_result.get('found_keywords', 0)}\n")
-                    f.write(f"coverage_analysis_time: {coverage_time:.6f}\n")
-                    
-                    f.write("\n" + "=" * 80 + "\n")
-                    f.write("END OF EVALUATION REPORT\n")
-                    f.write("=" * 80 + "\n")
-                
-                print(f"💾 Scores saved to: {scores_file}")
-                
-                # Log the scores file as MLflow artifact
-                mlflow.log_artifact(scores_file)
-                
-            except Exception as e:
-                print(f"⚠️ Error saving scores to text file: {e}")
-                mlflow.set_tag("scores_file_error", str(e))
-            
             mlflow.set_tag("status", "success")
-            return result
+            
+            # Prepara dizionario metriche per output file
+            metrics_dict = {
+                'query_input': test_input["improved_query"],
+                'query_length': len(test_input["improved_query"]),
+                'execution_CrewAnalysis_time_seconds': execution_time,
+                'execution_crew_success': 1,
+                'llm_relevance_score_outline_for_user_query': relevance_score,
+                'judge_evaluation_time': locals().get('judge_time', 0.0),
+                'keywords_total_count': locals().get('coverage_result', {}).get('total_keywords', 0),
+                'keywords_found_count': locals().get('coverage_result', {}).get('found_keywords', 0),
+                'keyword_coverage_percentage': coverage_percentage,
+                'coverage_analysis_time': locals().get('coverage_time', 0.0),
+                'found_keywords': locals().get('coverage_result', {}).get('found_keywords_list', []),
+                'missing_keywords': locals().get('coverage_result', {}).get('missing_keywords_list', []),
+                'status': 'success'
+            }
+            
+            return metrics_dict
             
         except Exception as e:
             execution_time = time.perf_counter() - start_time
             
             # Log errore
-            mlflow.log_metric("execution_time_seconds", execution_time)
+            mlflow.log_metric("execution_CrewAnalysis_time_seconds", execution_time)
             mlflow.log_metric("execution_success", 0)
             mlflow.set_tag("status", "failed")
             mlflow.set_tag("error_type", type(e).__name__)
@@ -596,87 +555,198 @@ def test_analysis_crew_with_mlflow():
             print(f"❌ Errore durante l'esecuzione: {e}")
             print(f"📊 Metriche registrate: execution_success=0, execution_time={execution_time:.2f}s")
             
-            # ==================== SAVE ERROR SCORES TO TEXT FILE ====================
-            # Create evaluation_output directory if it doesn't exist
-            output_dir = "evaluation_output"
+            # Prepara dizionario metriche per caso di errore
+            metrics_dict = {
+                'query_input': test_input["improved_query"],
+                'query_length': len(test_input["improved_query"]),
+                'execution_CrewAnalysis_time_seconds': execution_time,
+                'execution_crew_success': 0,
+                'llm_relevance_score_outline_for_user_query': 0.0,
+                'judge_evaluation_time': 0.0,
+                'keywords_total_count': 0,
+                'keywords_found_count': 0,
+                'keyword_coverage_percentage': 0.0,
+                'coverage_analysis_time': 0.0,
+                'found_keywords': [],
+                'missing_keywords': [],
+                'status': 'failed',
+                'error': str(e)
+            }
+            
+            return metrics_dict
+
+
+def save_metrics_to_file(test_results: list, output_file: str = "evaluation_output/analysis_crew_test_results.txt"):
+    """Save test metrics to a formatted text file with comprehensive analysis.
+    
+    Creates a structured summary file containing all test results, individual metrics,
+    and aggregated statistics for AnalysisCrew evaluation. The output format matches
+    the user's specified structure for manual analysis and comparison across test runs.
+    
+    Args:
+        test_results (list): List of dictionaries containing test metrics from each
+            test run. Each dictionary should include keys like 'query_input',
+            'execution_CrewAnalysis_time_seconds', 'llm_relevance_score_outline_for_user_query',
+            'keyword_coverage_percentage', etc.
+        output_file (str, optional): Path to the output text file. 
+            Defaults to "evaluation_output/analysis_crew_test_results.txt".
+            
+    Returns:
+        None: Function saves results to file and prints confirmation message.
+        
+    Raises:
+        IOError: If the output file cannot be created or written to.
+        KeyError: If required metric keys are missing from test_results dictionaries.
+        
+    Note:
+        - Creates a formatted text file with TEST 1), TEST 2), etc. sections
+        - Includes summary statistics at the end (averages, success rates)
+        - Handles both successful and failed test cases appropriately
+        - File encoding is UTF-8 to support international characters in queries
+        - Automatically creates the evaluation_output directory if it doesn't exist
+        
+    Example:
+        >>> test_results = [
+        ...     {'query_input': 'Create presentation...', 'execution_crew_success': 1, ...},
+        ...     {'query_input': 'Help with project...', 'execution_crew_success': 1, ...}
+        ... ]
+        >>> save_metrics_to_file(test_results, 'my_results.txt')
+        📄 Risultati salvati in: my_results.txt
+        
+    Output Format:
+        TEST 1)
+        query_input = "..."
+        query_length = 280
+        execution_CrewAnalysis_time_seconds = 17.85
+        [additional metrics...]
+        
+        SUMMARY STATISTICS:
+        Total tests: 2
+        Successful: 2
+        Average execution time: 14.65s
+        [additional statistics...]
+    """
+    try:
+        # Se è il path di default, usa path relativo al file corrente
+        if output_file == "evaluation_output/analysis_crew_test_results.txt":
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            output_file = os.path.join(script_dir, "evaluation_output", "analysis_crew_test_results.txt")
+        
+        # Crea la directory se non esiste
+        output_dir = os.path.dirname(output_file)
+        if output_dir:
             os.makedirs(output_dir, exist_ok=True)
+        
+        with open(output_file, 'w', encoding='utf-8') as f:
+            f.write("=" * 70 + "\n")
+            f.write("ANALYSIS CREW - TEST RESULTS SUMMARY\n")
+            f.write("=" * 70 + "\n\n")
             
-            # Generate timestamped filename
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            error_scores_file = os.path.join(output_dir, f"analysis_crew_error_scores_{timestamp}.txt")
+            for i, metrics in enumerate(test_results, 1):
+                f.write(f"TEST {i})\n\n")
+                f.write(f'query_input = "{metrics["query_input"]}"\n')
+                f.write(f'query_length = {metrics["query_length"]}\n\n')
+                f.write(f'execution_CrewAnalysis_time_seconds = {metrics["execution_CrewAnalysis_time_seconds"]:.2f}\n')
+                f.write(f'execution_crew_success = {metrics["execution_crew_success"]}\n\n')
+                f.write(f'llm_relevance_score_outline_for_user_query = {metrics["llm_relevance_score_outline_for_user_query"]}\n')
+                f.write(f'judge_evaluation_time = {metrics["judge_evaluation_time"]:.2f}\n\n')
+                f.write(f'keywords_total_count = {metrics["keywords_total_count"]}\n')
+                f.write(f'keywords_found_count = {metrics["keywords_found_count"]}\n')
+                f.write(f'keyword_coverage_percentage = {metrics["keyword_coverage_percentage"]:.1f}%\n')
+                f.write(f'coverage_analysis_time = {metrics["coverage_analysis_time"]:.2f}\n')
+                f.write(f'found_keywords = {metrics["found_keywords"]}\n')
+                f.write(f'missing_keywords = {metrics["missing_keywords"]}\n')
+                
+                if 'error' in metrics:
+                    f.write(f'error = "{metrics["error"]}"\n')
+                
+                f.write(f'status = {metrics["status"]}\n')
+                f.write("\n" + "-" * 50 + "\n\n")
             
-            try:
-                with open(error_scores_file, 'w', encoding='utf-8') as f:
-                    f.write("=" * 80 + "\n")
-                    f.write("ANALYSIS CREW EVALUATION SCORES - ERROR REPORT\n")
-                    f.write("=" * 80 + "\n")
-                    f.write(f"Timestamp: {datetime.now().isoformat()}\n")
-                    f.write(f"Test Input Query: {test_input['improved_query']}\n")
-                    f.write("=" * 80 + "\n\n")
-                    
-                    f.write("ERROR DETAILS:\n")
-                    f.write("-" * 40 + "\n")
-                    f.write(f"Error Type: {type(e).__name__}\n")
-                    f.write(f"Error Message: {str(e)}\n")
-                    f.write(f"Execution Time Before Error: {execution_time:.3f} seconds\n\n")
-                    
-                    f.write("PERFORMANCE METRICS:\n")
-                    f.write("-" * 40 + "\n")
-                    f.write(f"Execution Success: ❌ FAILED\n")
-                    f.write(f"Execution Time: {execution_time:.3f} seconds\n")
-                    f.write(f"Judge Evaluation Time: N/A (error occurred)\n")
-                    f.write(f"Coverage Analysis Time: N/A (error occurred)\n\n")
-                    
-                    f.write("QUALITY METRICS:\n")
-                    f.write("-" * 40 + "\n")
-                    f.write(f"LLM Relevance Score: 0.0/10.0 (error)\n")
-                    f.write(f"Keyword Coverage: 0.0% (error)\n")
-                    f.write(f"Keywords Found: 0/0 (error)\n\n")
-                    
-                    f.write("EVALUATION SUMMARY:\n")
-                    f.write("-" * 40 + "\n")
-                    f.write(f"Overall Assessment: ❌ FAILED\n")
-                    f.write(f"Relevance Level: N/A (error)\n")
-                    f.write(f"Coverage Level: N/A (error)\n")
-                    f.write(f"Performance Level: Failed after {execution_time:.1f}s\n\n")
-                    
-                    f.write("DETAILED METRICS (for MLflow):\n")
-                    f.write("-" * 40 + "\n")
-                    f.write(f"execution_success: 0\n")
-                    f.write(f"execution_time_seconds: {execution_time:.6f}\n")
-                    f.write(f"llm_relevance_score: 0.000000\n")
-                    f.write(f"judge_evaluation_time: 0.000000\n")
-                    f.write(f"keyword_coverage_percentage: 0.000000\n")
-                    f.write(f"keywords_total_count: 0\n")
-                    f.write(f"keywords_found_count: 0\n")
-                    f.write(f"coverage_analysis_time: 0.000000\n")
-                    
-                    f.write("\n" + "=" * 80 + "\n")
-                    f.write("END OF ERROR REPORT\n")
-                    f.write("=" * 80 + "\n")
+            # Summary statistics
+            successful_tests = [m for m in test_results if m['status'] == 'success']
+            if successful_tests:
+                f.write("SUMMARY STATISTICS:\n")
+                f.write("=" * 30 + "\n")
+                f.write(f"Total tests: {len(test_results)}\n")
+                f.write(f"Successful: {len(successful_tests)}\n")
+                f.write(f"Failed: {len(test_results) - len(successful_tests)}\n\n")
                 
-                print(f"💾 Error scores saved to: {error_scores_file}")
+                avg_execution_time = sum(m['execution_CrewAnalysis_time_seconds'] for m in successful_tests) / len(successful_tests)
+                avg_relevance_score = sum(m['llm_relevance_score_outline_for_user_query'] for m in successful_tests) / len(successful_tests)
+                avg_coverage = sum(m['keyword_coverage_percentage'] for m in successful_tests) / len(successful_tests)
                 
-                # Log the error scores file as MLflow artifact
-                mlflow.log_artifact(error_scores_file)
-                
-            except Exception as file_error:
-                print(f"⚠️ Error saving error scores to text file: {file_error}")
-                mlflow.set_tag("error_scores_file_error", str(file_error))
-            
-            raise
+                f.write(f"Average execution time AnalysisCrew: {avg_execution_time:.2f}s\n")
+                f.write(f"Average relevance score: {avg_relevance_score:.1f}/10\n")
+                f.write(f"Average keyword coverage: {avg_coverage:.1f}%\n")
+        
+        # Mostra il path assoluto per essere chiari su dove è stato salvato
+        absolute_path = os.path.abspath(output_file)
+        print(f"📄 Risultati salvati in: {absolute_path}")
+        
+    except Exception as e:
+        print(f"❌ Errore durante salvataggio file: {e}")
 
 
 if __name__ == "__main__":
-    print("🚀 Test MLflow COMPLETO per AnalysisCrew")
-    print("📊 Traccia metriche di performance e qualità")
-    print("💾 Salva risultati in MLflow + file di testo")
-    print("🔗 Server MLflow: http://127.0.0.1:5000")
+    print("🚀 Test MLflow SEMPLIFICATO per AnalysisCrew")
+    # print("Traccia solo: execution_success + execution_time_seconds")
+    # print("Server MLflow: http://127.0.0.1:5000")
     print("-" * 50)
     
-    test_analysis_crew_with_mlflow()
+    tests_query = []
+
+    tests_query.append("Create a presentation on my inventory management system for e-commerce developed with Spring Boot microservices, PostgreSQL database, caching strategies, RabbitMQ for asynchronous messaging and User Interface with React. The system manages 50k products and integrates external APIs for suppliers.")
+    tests_query.append("Help with project presentation")
+    tests_query.append("Create a detailed presentation for our enterprise human resources management system that includes modules for AI-powered recruitment, " \
+                        "biometric attendance tracking, automated payroll processing, 360° performance review system, integrated e-learning platform, advanced analytics dashboards with Power BI, " \
+                        "integration with Active Directory and SAP legacy systems, GDPR compliance and privacy regulations, deployment on hybrid Azure cloud with high availability and disaster recovery")
+    tests_query.append("Present to executives our new platform for customer management with marketing campaign automation, sales pipeline and analytics. The system improves lead conversion by 30% and includes executive dashboards for company KPIs.")
+    #test2 = "Aiutami a presentare la nostra strategia di trasformazione digitale aziendale per migliorare l'efficienza operativa del 40%, ridurre i costi IT e aumentare la soddisfazione clienti attraverso nuovi canali digitali e automazione processi."
+    #test3 = "Crea presentazione per progetto importante"
+    test = "Crea una docs per un sistema di gestione inventario con API REST, database PostgreSQL e interfaccia web React. Il sistema deve permettere di tracciare prodotti, gestire ordini e generare report automatici."
+
+    # Lista per raccogliere tutti i risultati
+    all_test_results = []
+    
+    print(f"📊 Eseguendo {len(tests_query)} test...")
+    
+    for i, query in enumerate(tests_query, 1):
+        print(f"\n🔍 TEST {i}/{len(tests_query)}")
+        print(f"Query: {query[:60]}{'...' if len(query) > 60 else ''}")
+        
+        try:
+            metrics = test_analysis_crew_with_mlflow(query)
+            all_test_results.append(metrics)
+            print(f"✅ Test {i} completato - Status: {metrics['status']}")
+        except Exception as e:
+            print(f"❌ Test {i} fallito: {e}")
+            # Anche in caso di eccezione, prova a recuperare metriche base
+            error_metrics = {
+                'query_input': query,
+                'query_length': len(query),
+                'execution_CrewAnalysis_time_seconds': 0.0,
+                'execution_crew_success': 0,
+                'llm_relevance_score_outline_for_user_query': 0.0,
+                'judge_evaluation_time': 0.0,
+                'keywords_total_count': 0,
+                'keywords_found_count': 0,
+                'keyword_coverage_percentage': 0.0,
+                'coverage_analysis_time': 0.0,
+                'found_keywords': [],
+                'missing_keywords': [],
+                'status': 'exception',
+                'error': str(e)
+            }
+            all_test_results.append(error_metrics)
     
     print("-" * 50)
-    print("✅ Test completato!")
-    print("🔍 Controlla MLflow UI per i risultati")
-    print("📄 Controlla evaluation_output/ per i file di testo")
+    print("✅ Tutti i test completati!")
+    
+    # Salva risultati su file
+    print("\n📄 Salvando risultati su file...")
+    save_metrics_to_file(all_test_results)
+    
+    print("-" * 50)
+    print("✅ Test completato! Controlla MLflow UI per i risultati.")
+    print("📄 Controlla anche il file 'test_results_summary.txt' per il riassunto!")

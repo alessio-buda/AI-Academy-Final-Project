@@ -1,0 +1,97 @@
+======================================================================
+ANALYSIS CREW - TEST RESULTS SUMMARY
+======================================================================
+
+TEST 1)
+
+query_input = "Create a presentation on my inventory management system for e-commerce developed with Spring Boot microservices, PostgreSQL database, caching strategies, RabbitMQ for asynchronous messaging and User Interface with React. The system manages 50k products and integrates external APIs for suppliers."
+query_length = 296
+
+execution_CrewAnalysis_time_seconds = 15.87
+execution_crew_success = 1
+
+llm_relevance_score_outline_for_user_query = 10.0
+judge_evaluation_time = 2.02
+
+keywords_total_count = 8
+keywords_found_count = 8
+keyword_coverage_percentage = 100.0%
+coverage_analysis_time = 2.01
+found_keywords = ['inventory management system', 'e-commerce', 'Spring Boot microservices', 'PostgreSQL', 'RabbitMQ', 'React', 'external API integration', 'caching strategies']
+missing_keywords = []
+status = success
+
+--------------------------------------------------
+
+TEST 2)
+
+query_input = "Help with project presentation"
+query_length = 30
+
+execution_CrewAnalysis_time_seconds = 19.22
+execution_crew_success = 1
+
+llm_relevance_score_outline_for_user_query = 8.0
+judge_evaluation_time = 1.79
+
+keywords_total_count = 7
+keywords_found_count = 4
+keyword_coverage_percentage = 57.1%
+coverage_analysis_time = 1.83
+found_keywords = ['project presentation', 'visual aids', 'audience engagement', 'slide design']
+missing_keywords = ['help', 'content organization', 'delivery techniques']
+status = success
+
+--------------------------------------------------
+
+TEST 3)
+
+query_input = "Create a detailed presentation for our enterprise human resources management system that includes modules for AI-powered recruitment, biometric attendance tracking, automated payroll processing, 360° performance review system, integrated e-learning platform, advanced analytics dashboards with Power BI, integration with Active Directory and SAP legacy systems, GDPR compliance and privacy regulations, deployment on hybrid Azure cloud with high availability and disaster recovery"
+query_length = 480
+
+execution_CrewAnalysis_time_seconds = 12.56
+execution_crew_success = 1
+
+llm_relevance_score_outline_for_user_query = 9.0
+judge_evaluation_time = 1.85
+
+keywords_total_count = 8
+keywords_found_count = 7
+keyword_coverage_percentage = 87.5%
+coverage_analysis_time = 3.33
+found_keywords = ['human resources management system', 'AI-powered recruitment', 'biometric attendance tracking', 'automated payroll processing', '360° performance review system', 'GDPR compliance', 'hybrid Azure cloud']
+missing_keywords = ['advanced analytics dashboards']
+status = success
+
+--------------------------------------------------
+
+TEST 4)
+
+query_input = "Present to executives our new platform for customer management with marketing campaign automation, sales pipeline and analytics. The system improves lead conversion by 30% and includes executive dashboards for company KPIs."
+query_length = 223
+
+execution_CrewAnalysis_time_seconds = 12.12
+execution_crew_success = 1
+
+llm_relevance_score_outline_for_user_query = 10.0
+judge_evaluation_time = 1.84
+
+keywords_total_count = 7
+keywords_found_count = 6
+keyword_coverage_percentage = 85.7%
+coverage_analysis_time = 1.78
+found_keywords = ['customer management platform', 'marketing campaign automation', 'sales pipeline', 'analytics', 'lead conversion', 'executive dashboards']
+missing_keywords = ['company KPIs']
+status = success
+
+--------------------------------------------------
+
+SUMMARY STATISTICS:
+==============================
+Total tests: 4
+Successful: 4
+Failed: 0
+
+Average execution time AnalysisCrew: 14.94s
+Average relevance score: 9.2/10
+Average keyword coverage: 82.5%

@@ -41,7 +41,7 @@
 
 2. **Install dependencies**
    ```bash
-   pip install -e .
+   pip install -r requirements.txt
    # or using uv
    uv sync
    ```
@@ -53,6 +53,13 @@
    AZURE_API_BASE=your_azure_endpoint
    AZURE_API_VERSION=2024-02-15-preview
    MODEL=azure/gpt-4o-mini
+
+   AZURE_OPENAI_EMBEDDING_DEPLOYMENT=your_embedding_deployment
+   AZURE_OPENAI_ENDPOINT=your_azure_endpoint
+
+   AZURE_OPENAI_API_KEY=your_azure_api_key
+   AZURE_OPENAI_ENDPOINT=your_azure_endpoint
+   AZURE_OPENAI_API_VERSION=2024-02-15-preview
    ```
 
 4. **Start Qdrant server**
@@ -104,6 +111,7 @@ User Input → Security Validation → Project Analysis → Report Generation �
 | **Vector DB** | Qdrant | Semantic search & retrieval |
 | **Embeddings** | Azure text-embedding-ada-002 | Document vectorization |
 | **Evaluation** | MLflow | Performance tracking |
+| **Evaluation** | RAGAS | Performance tracking |
 | **Documentation** | Sphinx | API & user documentation |
 
 ---
@@ -250,6 +258,22 @@ The system includes comprehensive evaluation capabilities:
 - `overall_score` - Combined performance metric
 - `expectation_match` - Result vs expected outcome
 
+### **RAGAS Integration**
+
+*Location*: `report_generator/evaluation/`
+
+The system includes comprehensive evaluation capabilities for RAG pipelines:
+
+**Metrics**
+- **Context Recall**: measures whether retrieved passages cover what is needed to answer the question
+- **Faithfulness**: measures how much the answer is supported by the retrieved passages
+- **Answer Relevancy**: measures how much the answer adheres to the question
+
+All metrics consist of values in the 0-1 range. Evaluation is entrusted to an LLM that operates as a judge (LLM-as-a-judge).
+
+
+#### **Evaluation Metrics**
+
 #### **Usage Examples**
 
 ```bash
@@ -326,34 +350,6 @@ AI-Academy-Final-Project/
 
 
 ##  **Configuration & Customization**
-
-### **Environment Configuration**
-
-```bash
-# Required Azure OpenAI settings
-AZURE_API_KEY=your_api_key
-AZURE_API_BASE=https://your-resource.openai.azure.com
-AZURE_API_VERSION=2024-02-15-preview
-MODEL=azure/gpt-4o-mini
-
-# Optional Qdrant settings (defaults shown)
-QDRANT_URL=http://localhost:6333
-COLLECTION_NAME=final_project_docs
-
-# Optional evaluation settings
-MLFLOW_TRACKING_URI=file:./mlruns
-```
-
-### **System Tuning**
-
-#### **RAG Search Parameters**
-```python
-# In rag_qdrant_hybrid.py Settings class
-chunk_size: int = 700           # Adjust for document granularity
-top_n_semantic: int = 30        # More candidates = better recall
-final_k: int = 5               # Final results returned
-alpha: float = 0.75            # Semantic vs keyword balance
-mmr_lambda: float = 0.6        # Relevance vs diversity
 ```
 
 #### **Crew Behavior**
@@ -411,26 +407,6 @@ from src.report_generator.crews.sanitize_crew.sanitize_crew import SanitizeCrew
 crew = SanitizeCrew()
 result = crew.crew().kickoff(inputs={"user_input": "test"})
 ```
-
----
-
-##  **Performance & Scaling**
-
-### **System Performance**
-
-| Metric | Typical Value | Optimization |
-|--------|---------------|--------------|
-| **End-to-End Time** | 30-60 seconds | Use GPT-3.5-turbo for faster responses |
-| **Memory Usage** | 500MB-1GB | Adjust chunk_size and batch_size |
-| **Token Consumption** | 5,000-15,000 tokens | Optimize prompts and context |
-| **Vector Storage** | 50-200MB | Depends on document corpus size |
-
-### **Scaling Considerations**
-
-- **Horizontal**: Multiple Qdrant instances for larger document sets
-- **Vertical**: Increase batch sizes and parallel processing
-- **Caching**: Enable embedding cache for repeated queries
-- **Load Balancing**: Distribute crews across multiple processes
 
 ---
 

@@ -1,13 +1,14 @@
-# Application Documentation Template
+# DocuGenAI
 
 **Application Owner:** EY Advisory S.p.A.
+
 **Document Version:** 1.0 
+
 **Reviewers:** Tiziano Bardini, Alessio Buda, Emanuela Rremilli, Danilo Santo
 
 ## Key Links
 
 - [GitHub](https://github.com/alessio-buda/AI-Academy-Final-Project)
-- [Application Architecture] TODO: inserire immagine
 
 ## General Information
 
@@ -40,6 +41,7 @@ Generated content must be clearly identified as AI-assisted when shared with cli
 **Regulatory References:** [Article 5](https://artificialintelligenceact.eu/article/5/)
 
 **Classification**: Limited Risk (in accordance with the AI Act [Article 50](https://artificialintelligenceact.eu/article/50/))
+
 **Reasoning**: This AI system is classified as Limited Risk under Article 50 of the EU AI Act based on the following assessment:
 
 - The system directly interacts with natural persons (clients and stakeholders) through the generated reports that are shared as part of consulting deliverables
@@ -63,7 +65,7 @@ The system serves as an assistive tool rather than a replacement for human exper
 ### Instructions for Use for Deployers
 (EU AI Act [Article 13](https://artificialintelligenceact.eu/article/13/))
 
-### Model Capabilities
+**Model Capabilities**
 
 What the application can and cannot do:
 
@@ -85,14 +87,17 @@ Cannot do:
 - Guarantee 100% accuracy without human review and validation
 - Operate effectively with incomplete or poorly structured documentation
 
-### Supported languages, data types, or scenarios:
+**Supported languages, data types, or scenarios**
 
 **Languages**: Optimized for English
+
 **Data types**: Markdown (.md), PDF (.pdf), HTML (.html) files
+
 **Optimal scenario**: Complete Sphinx-generated documentation with comprehensive project coverage
+
 **Supported scenarios**: Technical architecture documentation, project evaluation reports, implementation summaries
 
-### Input Data Requirements
+**Input Data Requirements**
 
 Format and quality expectations:
 
@@ -101,27 +106,27 @@ Format and quality expectations:
 - **Supported formats**: .md, .pdf, .html files
 - **Quality expectations**: Well-structured documentation with clear hierarchical organization (Sphinx-generated documentation preferred)
 
-### Input parameters:
+**Input parameters**
 
 - Project description
 - Expected report outline structure
 - Target audience specification (technical/non-technical)
 
-### Output Explanation
+**Output Explanation**
 Report format and structure:
 
 - **Output format**: Markdown (.md) files
 - **Structure**: User-defined outline with populated sections based on documentation analysis
 - **Content adaptation**: Technical depth adjusted based on specified target audience
 
-### Interpretation guidelines:
+**Interpretation guidelines**
 
 Generated reports represent AI-assisted analysis of provided documentation
 Content accuracy depends on the quality and completeness of input documentation
 All outputs require human review and validation before client delivery
 Reports serve as first drafts requiring professional oversight and potential modification
 
-### System Architecture Overview
+**System Architecture Overview**
 
 **Functional description**: The system implements a three-crew CrewAI architecture with specialized agent roles for document processing and report generation.
 **Key components and workflow**:
@@ -141,15 +146,16 @@ Reports serve as first drafts requiring professional oversight and potential mod
   - Agent 1: RAG-powered documentation searcher with Qdrant vector database integration
   - Agent 2: Report writer that synthesizes outline structure with retrieved documentation content
 
-### Technical infrastructure:
+**Technical infrastructure**:
 
 **LLM Integration**: Azure OpenAI API with GPT-4o and text-embedding-ada models
+
 **Vector Database**: Qdrant for document indexing and semantic search
 Document Processing: Multi-format parser supporting HTML, Markdown, and PDF
 Deployment Environment: Azure AI Foundry infrastructure
 Interface: Command-line interface (CLI) for user interaction
 
-### Data flow:
+**Data flow**:
 
 User provides project description, outline, and audience specification via CLI
 Input validation and sanitization crew processes parameters
@@ -163,10 +169,9 @@ System outputs structured Markdown report for human review
 
 ### Models
 
-### Models
 Link to all model integrated in the AI/ML System
 
-| Model | Link to Single Source of Truth | Description of Application Usage |
+| Model | Link | Description of Application Usage |
 |-------|--------------------------------|----------------------------------|
 | GPT-4o | [Azure AI Foundry Endpoint](https://ai-academy-buda.services.ai.azure.com/) | Primary language model used for text generation and tool use across all six agents in the three-crew architecture. Handles input sanitization, project analysis, outline creation, documentation search, and report writing tasks. |
 | text-embedding-ada-002 | [Azure AI Foundry Endpoint](https://ai-academy-buda.services.ai.azure.com/) | Text embedding model used for document vectorization and semantic search capabilities. Converts project documentation into vector representations stored in Qdrant database for RAG-based information retrieval during report generation. |
@@ -180,10 +185,15 @@ No datasets other than the documentation provided by the user are employed in th
 ### Infrastructure and environment details:
 
 **Environment**: Local development/testing environment
+
 **Platform**: Personal computer running CLI application
+
 **Cloud services**: Azure AI Foundry for model access via API endpoints (https://ai-academy-buda.services.ai.azure.com/)
+
 **Vector database**: Qdrant instance (local or cloud-hosted for document vectorization and retrieval)
+
 **Authentication**: Azure OpenAI API key authentication
+
 **Runtime**: Python environment with CrewAI framework dependencies
 
 ### Integration with external systems or applications
@@ -191,13 +201,14 @@ No datasets other than the documentation provided by the user are employed in th
 **Regulatory References:** [Article 11](https://artificialintelligenceact.eu/article/11/); [Annex IV](https://artificialintelligenceact.eu/annex/4/) paragraph 1 (b, c, d, g, h), 2 (a)
 
 **Azure OpenAI Service**: API integration for GPT-4o and text-embedding-ada-002 models
+
 **Qdrant Vector Database**: For document embedding storage and semantic search capabilities
 
-#### APIs
+### APIs
 
 The project is not currently available via API.
 
-#### Infrastructure
+### Infrastructure
 
 Since the project is currenlty under testing, no specific infrastructure has been deployed yet.
 
@@ -267,9 +278,9 @@ Practical risk identification based on system functionality and testing observat
 ### Testing and Validation Procedures (Accuracy)
 - **Performance Metrics:** For the sanitize crew and analysis crew, an LLM evaluates the success rate of the crew. For the RAG tool, context precision, context recall, faithfulness, and answer relevancy are evaluated on a set of input - ground-truth pairs
 - **Validation Results:** Sanitize and analysis crew: ADD RESULTS. RAG Tool: 
-  - context_precision    0.655556/1
-  - context_recall       0.839583/1
-  - faithfulness         0.928267/1
+  - context_precision    0.808333/1
+  - context_recall       0.788889/1
+  - faithfulness         0.954412/1
   - answer_relevancy     0.912678/1
 
 ### Accuracy Throughout the Lifecycle

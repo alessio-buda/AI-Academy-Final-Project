@@ -1,0 +1,186 @@
+/* Custom CSS for Game Builder Crew Documentation */
+
+/* Improve code block styling */
+.highlight {
+    border-radius: 5px;
+    margin: 1em 0;
+}
+
+/* Style for admonitions */
+.admonition {
+    border-radius: 5px;
+    margin: 1em 0;
+    padding: 12px;
+}
+
+.admonition.note {
+    border-left: 4px solid #3498db;
+    background-color: #f8f9fa;
+}
+
+.admonition.warning {
+    border-left: 4px solid #f39c12;
+    background-color: #fffbf0;
+}
+
+.admonition.important {
+    border-left: 4px solid #e74c3c;
+    background-color: #fdf2f2;
+}
+
+.admonition.tip {
+    border-left: 4px solid #2ecc71;
+    background-color: #f0fff4;
+}
+
+/* Improve table styling */
+.wy-table-responsive table td, 
+.wy-table-responsive table th {
+    white-space: normal;
+    vertical-align: top;
+    padding: 8px;
+}
+
+/* Logo and branding */
+.wy-side-nav-search {
+    background-color: #2980b9;
+}
+
+.wy-side-nav-search .wy-dropdown > a,
+.wy-side-nav-search > a {
+    color: #fcfcfc;
+    font-size: 100%;
+    font-weight: bold;
+    display: inline-block;
+    padding: 4px 6px;
+    margin-bottom: 0.809em;
+}
+
+/* Improve navigation */
+.wy-nav-content-wrap {
+    margin-left: 300px;
+}
+
+.wy-nav-side {
+    width: 300px;
+}
+
+/* Code blocks with copy button */
+.highlight pre {
+    position: relative;
+}
+
+/* Better spacing for function signatures */
+.sig-paren {
+    color: #999;
+}
+
+.sig-param {
+    font-style: italic;
+}
+
+/* Custom styling for API documentation */
+.py.class > dt {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 3px;
+    padding: 6px;
+    margin-bottom: 12px;
+}
+
+.py.method > dt,
+.py.function > dt {
+    background-color: #fff;
+    border-left: 3px solid #2980b9;
+    padding-left: 10px;
+    margin: 12px 0 6px 0;
+}
+
+/* Improve parameter lists */
+.field-list {
+    margin-bottom: 12px;
+}
+
+.field-name {
+    background-color: #f1f2f3;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Style for section headers */
+h1 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+}
+
+h2 {
+    color: #34495e;
+    border-bottom: 1px solid #bdc3c7;
+    padding-bottom: 4px;
+}
+
+h3 {
+    color: #555;
+}
+
+/* Improve lists */
+ul li, ol li {
+    margin-bottom: 4px;
+}
+
+/* Custom boxes for important information */
+.custom-box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px 0;
+    background-color: #f9f9f9;
+}
+
+.custom-box.info {
+    border-left: 4px solid #3498db;
+    background-color: #f0f7ff;
+}
+
+.custom-box.success {
+    border-left: 4px solid #2ecc71;
+    background-color: #f0fff4;
+}
+
+.custom-box.warning {
+    border-left: 4px solid #f39c12;
+    background-color: #fffbf0;
+}
+
+.custom-box.danger {
+    border-left: 4px solid #e74c3c;
+    background-color: #fdf2f2;
+}
+
+/* Responsive design improvements */
+@media screen and (max-width: 768px) {
+    .wy-nav-content-wrap {
+        margin-left: 0;
+    }
+    
+    .wy-nav-side {
+        left: -300px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .wy-nav-side,
+    .wy-nav-content-wrap .wy-breadcrumbs,
+    .rst-footer-buttons,
+    .rst-versions {
+        display: none !important;
+    }
+    
+    .wy-nav-content {
+        margin-left: 0;
+    }
+}

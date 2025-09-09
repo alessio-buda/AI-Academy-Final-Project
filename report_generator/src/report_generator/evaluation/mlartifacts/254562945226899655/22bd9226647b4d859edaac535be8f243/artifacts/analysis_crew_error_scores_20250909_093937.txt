@@ -1,0 +1,47 @@
+================================================================================
+ANALYSIS CREW EVALUATION SCORES - ERROR REPORT
+================================================================================
+Timestamp: 2025-09-09T09:39:37.181013
+Test Input Query: Crea una docs per un sistema di gestione inventario con API REST, database PostgreSQL e interfaccia web React. Il sistema deve permettere di tracciare prodotti, gestire ordini e generare report automatici.
+================================================================================
+
+ERROR DETAILS:
+----------------------------------------
+Error Type: NotFoundError
+Error Message: litellm.NotFoundError: AzureException NotFoundError - The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.
+Execution Time Before Error: 2.214 seconds
+
+PERFORMANCE METRICS:
+----------------------------------------
+Execution Success: ❌ FAILED
+Execution Time: 2.214 seconds
+Judge Evaluation Time: N/A (error occurred)
+Coverage Analysis Time: N/A (error occurred)
+
+QUALITY METRICS:
+----------------------------------------
+LLM Relevance Score: 0.0/10.0 (error)
+Keyword Coverage: 0.0% (error)
+Keywords Found: 0/0 (error)
+
+EVALUATION SUMMARY:
+----------------------------------------
+Overall Assessment: ❌ FAILED
+Relevance Level: N/A (error)
+Coverage Level: N/A (error)
+Performance Level: Failed after 2.2s
+
+DETAILED METRICS (for MLflow):
+----------------------------------------
+execution_success: 0
+execution_time_seconds: 2.214265
+llm_relevance_score: 0.000000
+judge_evaluation_time: 0.000000
+keyword_coverage_percentage: 0.000000
+keywords_total_count: 0
+keywords_found_count: 0
+coverage_analysis_time: 0.000000
+
+================================================================================
+END OF ERROR REPORT
+================================================================================

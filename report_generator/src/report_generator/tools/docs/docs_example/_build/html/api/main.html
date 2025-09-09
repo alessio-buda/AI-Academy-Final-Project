@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>main module &mdash; Game Builder Crew 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1cfeddc2" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="crew module" href="crew.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Game Builder Crew
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Game Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crew.html">crew module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">main module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-overview">Module Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-configuration">Module Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-examples">Integration Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-support">Testing Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Game Builder Crew</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">API Reference</a></li>
+      <li class="breadcrumb-item active">main module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/main.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="main-module">
+<h1>main module<a class="headerlink" href="#main-module" title="Link to this heading"></a></h1>
+<section id="module-overview">
+<h2>Module Overview<a class="headerlink" href="#module-overview" title="Link to this heading"></a></h2>
+<p>The main module provides the primary entry points for executing and training the Game Builder Crew. It contains two key functions that handle different aspects of the system:</p>
+<ul class="simple">
+<li><p><strong>run()</strong>: Production execution with predefined examples</p></li>
+<li><p><strong>train()</strong>: Training and model improvement functionality</p></li>
+</ul>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+</section>
+<section id="module-configuration">
+<h2>Module Configuration<a class="headerlink" href="#module-configuration" title="Link to this heading"></a></h2>
+<p><strong>Default Settings:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Game examples used by default</span>
+<span class="n">PRODUCTION_EXAMPLE</span> <span class="o">=</span> <span class="s1">&#39;example3_snake&#39;</span>    <span class="c1"># Used by run()</span>
+<span class="n">TRAINING_EXAMPLE</span> <span class="o">=</span> <span class="s1">&#39;example1_pacman&#39;</span>     <span class="c1"># Used by train()</span>
+
+<span class="c1"># File paths</span>
+<span class="n">CONFIG_PATH</span> <span class="o">=</span> <span class="s1">&#39;src/game_builder_crew/config/gamedesign.yaml&#39;</span>
+</pre></div>
+</div>
+<p><strong>Environment Variables:</strong></p>
+<p>The module respects these environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># OpenAI Configuration</span>
+<span class="nv">OPENAI_API_KEY</span><span class="o">=</span>your_key_here
+<span class="nv">OPENAI_MODEL</span><span class="o">=</span>gpt-4o
+
+<span class="c1"># Logging</span>
+<span class="nv">LOG_LEVEL</span><span class="o">=</span>INFO
+<span class="nv">CREW_VERBOSE</span><span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># Training Parameters</span>
+<span class="nv">DEFAULT_ITERATIONS</span><span class="o">=</span><span class="m">10</span>
+<span class="nv">MODEL_OUTPUT_DIR</span><span class="o">=</span>./models/
+</pre></div>
+</div>
+</section>
+<section id="integration-examples">
+<h2>Integration Examples<a class="headerlink" href="#integration-examples" title="Link to this heading"></a></h2>
+<p><strong>Custom Execution Script:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="sd">&quot;&quot;&quot;Custom game generation script.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.main</span><span class="w"> </span><span class="kn">import</span> <span class="n">run</span><span class="p">,</span> <span class="n">train</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.crew</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameBuilderCrew</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Game Builder Crew CLI&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--mode&#39;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;custom&#39;</span><span class="p">],</span>
+                       <span class="n">default</span><span class="o">=</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Execution mode&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--iterations&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                       <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Training iterations&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--output&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;trained_model.pkl&#39;</span><span class="p">,</span>
+                       <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Output filename for training&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--game&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Custom game description&#39;</span><span class="p">)</span>
+
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;run&#39;</span><span class="p">:</span>
+        <span class="n">run</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;train&#39;</span><span class="p">:</span>
+        <span class="n">train</span><span class="p">(</span><span class="n">n_iterations</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">iterations</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;custom&#39;</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">game</span><span class="p">:</span>
+        <span class="n">crew</span> <span class="o">=</span> <span class="n">GameBuilderCrew</span><span class="p">()</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;game&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">game</span><span class="p">}</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span><span class="o">.</span><span class="n">kickoff</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Batch Processing:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.crew</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameBuilderCrew</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">batch_generate_games</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate multiple games from all examples.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Load all examples</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;src/game_builder_crew/config/gamedesign.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">examples</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="n">crew</span> <span class="o">=</span> <span class="n">GameBuilderCrew</span><span class="p">()</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">example_name</span><span class="p">,</span> <span class="n">game_spec</span> <span class="ow">in</span> <span class="n">examples</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">example_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;example&#39;</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generating game from </span><span class="si">{</span><span class="n">example_name</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+
+            <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;game&#39;</span><span class="p">:</span> <span class="n">game_spec</span><span class="p">}</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span><span class="o">.</span><span class="n">kickoff</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+            <span class="c1"># Save to file</span>
+            <span class="n">output_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;generated_</span><span class="si">{</span><span class="n">example_name</span><span class="si">}</span><span class="s2">.py&quot;</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+            <span class="n">results</span><span class="p">[</span><span class="n">example_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_file</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved to </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+<p><strong>Performance Monitoring:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.main</span><span class="w"> </span><span class="kn">import</span> <span class="n">run</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">monitored_execution</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run with performance monitoring.&quot;&quot;&quot;</span>
+
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">start_memory</span> <span class="o">=</span> <span class="n">get_memory_usage</span><span class="p">()</span>  <span class="c1"># Custom function</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">run</span><span class="p">()</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">error_msg</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">error_msg</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">end_memory</span> <span class="o">=</span> <span class="n">get_memory_usage</span><span class="p">()</span>
+
+    <span class="c1"># Log performance metrics</span>
+    <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+        <span class="s1">&#39;execution_time&#39;</span><span class="p">:</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">,</span>
+        <span class="s1">&#39;memory_used&#39;</span><span class="p">:</span> <span class="n">end_memory</span> <span class="o">-</span> <span class="n">start_memory</span><span class="p">,</span>
+        <span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="n">success</span><span class="p">,</span>
+        <span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">error_msg</span>
+    <span class="p">}</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;performance_log.json&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">metrics</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-support">
+<h2>Testing Support<a class="headerlink" href="#testing-support" title="Link to this heading"></a></h2>
+<p><strong>Unit Test Helpers:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">unittest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">unittest.mock</span><span class="w"> </span><span class="kn">import</span> <span class="n">patch</span><span class="p">,</span> <span class="n">MagicMock</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.main</span><span class="w"> </span><span class="kn">import</span> <span class="n">run</span><span class="p">,</span> <span class="n">train</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestMainModule</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;game_builder_crew.main.GameBuilderCrew&#39;</span><span class="p">)</span>
+    <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;yaml.safe_load&#39;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_run_success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_yaml</span><span class="p">,</span> <span class="n">mock_crew</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test successful execution of run().&quot;&quot;&quot;</span>
+
+        <span class="c1"># Setup mocks</span>
+        <span class="n">mock_yaml</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;example3_snake&#39;</span><span class="p">:</span> <span class="s1">&#39;test game spec&#39;</span><span class="p">}</span>
+        <span class="n">mock_crew_instance</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+        <span class="n">mock_crew</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">mock_crew_instance</span>
+        <span class="n">mock_crew_instance</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span><span class="o">.</span><span class="n">kickoff</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s2">&quot;# Test game code&quot;</span>
+
+        <span class="c1"># Execute</span>
+        <span class="n">run</span><span class="p">()</span>
+
+        <span class="c1"># Verify</span>
+        <span class="n">mock_crew_instance</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span><span class="o">.</span><span class="n">kickoff</span><span class="o">.</span><span class="n">assert_called_once</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_train_parameter_validation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test parameter validation in train().&quot;&quot;&quot;</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="n">train</span><span class="p">(</span><span class="n">n_iterations</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;test.pkl&quot;</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="n">train</span><span class="p">(</span><span class="n">n_iterations</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="crew.html"><span class="doc">crew module</span></a>: Core crew orchestration</p></li>
+<li><p><span class="xref std std-doc">configuration</span>: Configuration file formats</p></li>
+<li><p><a class="reference internal" href="../usage.html"><span class="doc">Usage Guide</span></a>: Detailed usage examples</p></li>
+<li><p><span class="xref std std-doc">../development/testing</span>: Testing strategies</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="crew.html" class="btn btn-neutral float-left" title="crew module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, CrewAI Examples Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+rag_search_task:
+  description: >
+    IMPORTANT: You MUST use the "RAG Search Tool" to retrieve information for each section in the outline.
+    
+    For each section and subsection in the provided outline:
+    1. Use the "RAG Search Tool" with relevant keywords based on the section/subsection's description
+    2. Report exactly what the tool returns, adding the documents under the respective section
+    3. If the tool returns no results, state: "No documents found for: [section name]"
+    4. If there are errors, state: "Tool Error: [error description]"
+    5. Do NOT invent or fabricate any sources or documents
+    
+    You have access to the "RAG Search Tool" - use it for every search query.
+    
+    Outline structure: '{outline_structure}'
+  expected_output: >
+    The outline with REAL documents retrieved using the RAG Search Tool listed under each section. 
+    If no documents are found or there are errors, report this clearly. 
+    NO fictional sources allowed - only actual tool results.
+  agent: rag_searcher
+
+
+write_report_task:
+  description: >
+    Given an outline with descriptions and a list of relevant documents for each section,
+    write comprehensive content for each section. Base your writing on the provided sources and ensure the
+    content matches the target audience level and communication style specified in the outline.
+    
+    Target audience: '{target_audience}'
+    Communication style: '{communication_style}'
+  context:
+    - rag_search_task
+  expected_output: >
+    A well-structured, comprehensive report section for each point in the outline, written for the specified audience 
+    and communication style, based on the provided sources. Your output should be in markdown format.
+  output_file: 
+    - output/report.md
+  agent: writer

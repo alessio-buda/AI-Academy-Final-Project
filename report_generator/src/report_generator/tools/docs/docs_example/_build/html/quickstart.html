@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Start Guide &mdash; Game Builder Crew 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1cfeddc2" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usage Guide" href="usage.html" />
+    <link rel="prev" title="Installation Guide" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Game Builder Crew
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minute-quick-start">5-Minute Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-usage-patterns">Basic Usage Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method-1-command-line-simplest">Method 1: Command Line (Simplest)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-2-python-script-customizable">Method 2: Python Script (Customizable)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-3-using-predefined-examples">Method 3: Using Predefined Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-the-output">Understanding the Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-game-generation">Customizing Game Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#writing-effective-game-descriptions">Writing Effective Game Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-different-game-types">Working with Different Game Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#common-workflows">Common Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#development-workflow">Development Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#training-workflow">Training Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-quick-issues">Troubleshooting Quick Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Game Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/crew.html">crew module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/main.html">main module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Game Builder Crew</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quick Start Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/quickstart.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quick-start-guide">
+<h1>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Link to this heading"></a></h1>
+<p>This guide will get you up and running with the Game Builder Crew in just a few minutes.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Before starting, make sure you have:</p>
+<ul class="simple">
+<li><p>✅ Python 3.8+ installed</p></li>
+<li><p>✅ Game Builder Crew installed (see <a class="reference internal" href="installation.html"><span class="doc">Installation Guide</span></a>)</p></li>
+<li><p>✅ OpenAI API key configured</p></li>
+<li><p>✅ Basic understanding of Python</p></li>
+</ul>
+</section>
+<section id="minute-quick-start">
+<h2>5-Minute Quick Start<a class="headerlink" href="#minute-quick-start" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p><strong>Navigate to Project Directory</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>game-builder-crew
+</pre></div>
+</div>
+</li>
+<li><p><strong>Run Your First Game Creation</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>game_builder_crew
+</pre></div>
+</div>
+<p>This will automatically:
+- Load the Snake game example
+- Initialize the three AI agents
+- Create, review, and finalize the game code
+- Display the complete Python game</p>
+</li>
+<li><p><strong>View the Output</strong></p>
+<p>The system will output something like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>## Welcome to the Game Crew
+-------------------------------
+[Agent execution logs...]
+
+########################
+## Here is the result
+########################
+
+final code for the game:
+[Complete Python Snake game code]
+</pre></div>
+</div>
+</li>
+<li><p><strong>Save and Run the Game</strong></p>
+<p>Copy the generated code to a file and run it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the output to a file</span>
+python<span class="w"> </span>generated_game.py
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="basic-usage-patterns">
+<h2>Basic Usage Patterns<a class="headerlink" href="#basic-usage-patterns" title="Link to this heading"></a></h2>
+<section id="method-1-command-line-simplest">
+<h3>Method 1: Command Line (Simplest)<a class="headerlink" href="#method-1-command-line-simplest" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run with default Snake game example</span>
+poetry<span class="w"> </span>run<span class="w"> </span>game_builder_crew
+</pre></div>
+</div>
+</section>
+<section id="method-2-python-script-customizable">
+<h3>Method 2: Python Script (Customizable)<a class="headerlink" href="#method-2-python-script-customizable" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.crew</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameBuilderCrew</span>
+
+<span class="c1"># Initialize the crew</span>
+<span class="n">crew</span> <span class="o">=</span> <span class="n">GameBuilderCrew</span><span class="p">()</span>
+
+<span class="c1"># Define your game requirements</span>
+<span class="n">game_description</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Create a simple Pong game with:</span>
+<span class="s2">- Two paddles controlled by keyboard</span>
+<span class="s2">- Ball physics with collision detection</span>
+<span class="s2">- Score tracking for both players</span>
+<span class="s2">- Game over conditions</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># Generate the game</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;game&#39;</span><span class="p">:</span> <span class="n">game_description</span><span class="p">}</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span><span class="o">.</span><span class="n">kickoff</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generated Game Code:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="method-3-using-predefined-examples">
+<h3>Method 3: Using Predefined Examples<a class="headerlink" href="#method-3-using-predefined-examples" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">game_builder_crew.crew</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameBuilderCrew</span>
+
+<span class="c1"># Load predefined examples</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;src/game_builder_crew/config/gamedesign.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">examples</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="c1"># Choose an example</span>
+<span class="n">crew</span> <span class="o">=</span> <span class="n">GameBuilderCrew</span><span class="p">()</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;game&#39;</span><span class="p">:</span> <span class="n">examples</span><span class="p">[</span><span class="s1">&#39;example1_pacman&#39;</span><span class="p">]}</span>  <span class="c1"># or example2_pacman, example3_snake</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">crew</span><span class="o">.</span><span class="n">crew</span><span class="p">()</span><span class="o">.</span><span class="n">kickoff</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="understanding-the-output">
+<h2>Understanding the Output<a class="headerlink" href="#understanding-the-output" title="Link to this heading"></a></h2>
+<p>The Game Builder Crew produces complete, executable Python game code that includes:</p>
+<p><strong>Essential Components:</strong>
+- All necessary imports
+- Game class or function definitions
+- Main game loop
+- Event handling for user input
+- Graphics rendering (using pygame or similar)
+- Game logic and physics</p>
+<p><strong>Code Quality Features:</strong>
+- Proper error handling
+- Inline comments explaining key functions
+- Clean, readable code structure
+- Cross-platform compatibility</p>
+<p><strong>Example Output Structure:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="c1"># Game constants</span>
+<span class="n">WINDOW_WIDTH</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="n">WINDOW_HEIGHT</span> <span class="o">=</span> <span class="mi">600</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SnakeGame</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Initialization code</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_events</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Input handling</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Game logic</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Rendering</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Main game loop</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">game</span> <span class="o">=</span> <span class="n">SnakeGame</span><span class="p">()</span>
+    <span class="n">game</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="customizing-game-generation">
+<h2>Customizing Game Generation<a class="headerlink" href="#customizing-game-generation" title="Link to this heading"></a></h2>
+<section id="writing-effective-game-descriptions">
+<h3>Writing Effective Game Descriptions<a class="headerlink" href="#writing-effective-game-descriptions" title="Link to this heading"></a></h3>
+<p>For best results, include these elements in your game descriptions:</p>
+<p><strong>1. Core Mechanics</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Game Type: [Puzzle/Action/Strategy/etc.]
+Player Controls: [Keyboard/Mouse controls]
+Win Condition: [How to win]
+Lose Condition: [How to lose]
+</pre></div>
+</div>
+<p><strong>2. Technical Requirements</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Graphics: [Simple shapes/Sprites/ASCII]
+Dependencies: [Pygame/Tkinter/Console-only]
+Performance: [Target FPS, optimization needs]
+</pre></div>
+</div>
+<p><strong>3. Gameplay Features</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Scoring System: [How points are earned]
+Difficulty: [Static/Progressive]
+Special Features: [Power-ups, levels, etc.]
+</pre></div>
+</div>
+<p><strong>Example: Detailed Game Description</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Create a Tetris-like puzzle game with the following specifications:
+
+Core Mechanics:
+- Falling tetromino pieces (7 standard shapes)
+- Player can rotate and move pieces left/right
+- Completed horizontal lines disappear
+- Game speeds up as score increases
+
+Controls:
+- Arrow keys for movement (left, right, down)
+- Up arrow or spacebar for rotation
+- Escape key to pause/quit
+
+Technical Requirements:
+- Use Pygame for graphics
+- 10x20 game grid
+- Smooth piece movement and rotation
+- Score display and level indicator
+
+Game Features:
+- Line clearing animation
+- Next piece preview
+- High score tracking
+- Game over screen with restart option
+</pre></div>
+</div>
+</section>
+<section id="working-with-different-game-types">
+<h3>Working with Different Game Types<a class="headerlink" href="#working-with-different-game-types" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>Arcade Games (Snake, Pac-Man, Pong)</strong></dt><dd><ul class="simple">
+<li><p>Focus on collision detection</p></li>
+<li><p>Emphasize smooth movement</p></li>
+<li><p>Include scoring systems</p></li>
+</ul>
+</dd>
+<dt><strong>Puzzle Games (Tetris, Match-3)</strong></dt><dd><ul class="simple">
+<li><p>Describe grid mechanics</p></li>
+<li><p>Explain matching/clearing rules</p></li>
+<li><p>Detail win/lose conditions</p></li>
+</ul>
+</dd>
+<dt><strong>Strategy Games (Chess, Checkers)</strong></dt><dd><ul class="simple">
+<li><p>Define piece movement rules</p></li>
+<li><p>Explain turn-based mechanics</p></li>
+<li><p>Include AI opponent if needed</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="common-workflows">
+<h2>Common Workflows<a class="headerlink" href="#common-workflows" title="Link to this heading"></a></h2>
+<section id="development-workflow">
+<h3>Development Workflow<a class="headerlink" href="#development-workflow" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Concept Phase</strong>
+- Write detailed game description
+- Define core mechanics and features</p></li>
+<li><p><strong>Generation Phase</strong>
+- Run Game Builder Crew
+- Review generated code quality</p></li>
+<li><p><strong>Testing Phase</strong>
+- Test the generated game
+- Note any issues or improvements needed</p></li>
+<li><p><strong>Iteration Phase</strong>
+- Refine game description based on results
+- Re-run crew with improved specifications</p></li>
+</ol>
+</section>
+<section id="training-workflow">
+<h3>Training Workflow<a class="headerlink" href="#training-workflow" title="Link to this heading"></a></h3>
+<p>For improving the crew’s performance:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train the crew with multiple iterations</span>
+poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">from game_builder_crew.main import train</span>
+<span class="s2">train(n_iterations=10, filename=&#39;improved_model.pkl&#39;)</span>
+<span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>This trains the crew using the Pac-Man example and saves an improved model.</p>
+</section>
+</section>
+<section id="troubleshooting-quick-issues">
+<h2>Troubleshooting Quick Issues<a class="headerlink" href="#troubleshooting-quick-issues" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt><strong>Issue: Code doesn’t run</strong></dt><dd><ul class="simple">
+<li><p>Check for missing dependencies in the generated code</p></li>
+<li><p>Verify Python syntax is correct</p></li>
+<li><p>Ensure all imports are available</p></li>
+</ul>
+</dd>
+<dt><strong>Issue: Game mechanics don’t work as expected</strong></dt><dd><ul class="simple">
+<li><p>Review your game description for clarity</p></li>
+<li><p>Add more specific technical requirements</p></li>
+<li><p>Include edge cases in your specifications</p></li>
+</ul>
+</dd>
+<dt><strong>Issue: Performance problems</strong></dt><dd><ul class="simple">
+<li><p>Specify performance requirements in description</p></li>
+<li><p>Mention optimization needs</p></li>
+<li><p>Request specific frame rate targets</p></li>
+</ul>
+</dd>
+<dt><strong>Issue: Missing features</strong></dt><dd><ul class="simple">
+<li><p>Be more explicit about required features</p></li>
+<li><p>Include examples of expected behavior</p></li>
+<li><p>Add acceptance criteria to your description</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Now that you’ve successfully generated your first game:</p>
+<ol class="arabic simple">
+<li><p><strong>Explore Examples</strong>: Try the different predefined game examples</p></li>
+<li><p><strong>Customize Games</strong>: Experiment with your own game descriptions</p></li>
+<li><p><strong>Learn the Architecture</strong>: Read about the <span class="xref std std-doc">development/architecture</span></p></li>
+<li><p><strong>Extend the System</strong>: Learn how to add new agents in <span class="xref std std-doc">development/extending</span></p></li>
+<li><p><strong>Join the Community</strong>: Participate in discussions and share your results</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Pro Tip</strong>: Start with simple games and gradually increase complexity. The AI agents learn better with clear, specific requirements.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Remember</strong>: The quality of the generated game depends heavily on the clarity and detail of your game description. Take time to write comprehensive specifications for best results.</p>
+</div>
+<p>For more advanced usage patterns, see the full <a class="reference internal" href="usage.html"><span class="doc">Usage Guide</span></a> guide.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Usage Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, CrewAI Examples Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+================================================================================
+ANALYSIS CREW EVALUATION SCORES
+================================================================================
+Timestamp: 2025-09-08T18:25:38.930556
+Test Input Query: Crea una docs per un sistema di gestione inventario con API REST, database PostgreSQL e interfaccia web React. Il sistema deve permettere di tracciare prodotti, gestire ordini e generare report automatici.
+================================================================================
+
+PERFORMANCE METRICS:
+----------------------------------------
+Execution Success: ✅ SUCCESS
+Execution Time: 25.670 seconds
+Judge Evaluation Time: 2.340 seconds
+Coverage Analysis Time: 1.120 seconds
+Total Evaluation Time: 29.130 seconds
+
+QUALITY METRICS:
+----------------------------------------
+LLM Relevance Score: 8.50/10.0
+Keyword Coverage: 78.3%
+Keywords Found: 5/6
+
+KEYWORDS FOUND:
+--------------------
+✅ sistema di inventario
+✅ API REST
+✅ PostgreSQL
+✅ React
+✅ report automatici
+
+KEYWORDS MISSING:
+--------------------
+❌ gestione ordini
+
+EVALUATION SUMMARY:
+----------------------------------------
+Overall Assessment: ✅ GOOD
+Relevance Level: High
+Coverage Level: High
+Performance Level: Fast
+
+DETAILED METRICS (for MLflow):
+----------------------------------------
+execution_success: 1
+execution_time_seconds: 25.670000
+llm_relevance_score: 8.500000
+judge_evaluation_time: 2.340000
+keyword_coverage_percentage: 78.300000
+keywords_total_count: 6
+keywords_found_count: 5
+coverage_analysis_time: 1.120000
+
+================================================================================
+END OF EVALUATION REPORT
+================================================================================

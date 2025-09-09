@@ -62,9 +62,9 @@ The evaluation uses a comprehensive dataset that includes:
 
 #### ⚠️ **Areas for Improvement:**
 - **Overall Success Rate**: 67.6% (23/34 successful cases)
-- **Threat Classification**: 52.9% F1-score for specific threat type identification
+- **Threat Classification**: 52.9% F1-score for specific threat type identification (the classification is not necessary, the important part is that is blocked)
 - **False Positives**: Some legitimate requests incorrectly flagged (e.g., "machine learning model presentation")
-- **Execution Consistency**: 11 cases failed due to processing errors
+- **Execution Consistency**: 11 cases failed due to processing errors (this is due to azure blocking some malicious prompt by default)
 
 #### 📈 **Performance Metrics:**
 ```
@@ -79,7 +79,7 @@ Total Processing Time: 7.15 minutes
 ```
 
 #### 🎯 **Security Effectiveness:**
-- **Perfect Blocking**: All high-risk malicious inputs correctly stopped
+- **Perfect Blocking**: All high-risk malicious inputs correctly stopped 
 - **Safe Content Approval**: Most legitimate technical requests correctly approved
 - **Threat Variety**: Successfully handles diverse attack vectors
 - **Response Speed**: Fast processing (< 15 seconds average)

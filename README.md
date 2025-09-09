@@ -1,4 +1,4 @@
-# 🎯 AI Academy Final Project - Multi-Crew Report Generator
+# AI Academy Final Project - Multi-Crew Report Generator
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://python.org)
 [![CrewAI](https://img.shields.io/badge/CrewAI-0.177.0%2B-orange)](https://github.com/joaomdmoura/crewAI)
@@ -6,7 +6,7 @@
 [![Qdrant](https://img.shields.io/badge/Qdrant-Vector%20DB-purple)](https://qdrant.tech)
 [![MLflow](https://img.shields.io/badge/MLflow-Evaluation-yellow)](https://mlflow.org)
 
-> **A sophisticated multi-agent AI system for automated technical report generation with security validation, intelligent analysis, and RAG-enhanced content creation.**
+> **A multi-agent AI system for automated technical report generation with security validation, intelligent analysis, and RAG-enhanced content creation.**
 
 ---
 
@@ -24,9 +24,7 @@
 
 
 
-
-
-## 🚀 **Quick Start**
+## **Quick Start**
 
 ### Prerequisites
 - Python 3.10+ 
@@ -76,36 +74,25 @@
 
 ---
 
-## 🎯 **What This System Does**
+## **What This System Does**
 
 This project implements a **three-stage AI pipeline** that transforms user queries into comprehensive technical reports through:
 
-1. **🛡️ Security Validation** - Detects prompt injection and sanitizes input
-2. **🔍 Intelligent Analysis** - Extracts project details and creates structured outlines  
-3. **✍️ RAG-Enhanced Writing** - Retrieves relevant documents and generates final reports
-
-### **Real-World Example**
-
-**Input**: *"Help me create a presentation about CrewAI framework"*
-
-**Output**: A complete technical report with:
-- Executive summary and project analysis
-- Architectural design patterns
-- Code examples and best practices  
-- Critical evaluation and recommendations
-- Source citations from knowledge base
+1. **Security Validation** - Detects prompt injection and sanitizes input
+2. **Intelligent Analysis** - Extracts project details and creates structured outlines  
+3. **RAG-Enhanced Writing** - Retrieves relevant documents and generates final reports
 
 ---
 
-## 🏗️ **System Architecture**
+##  **System Architecture**
 
 ### **Multi-Crew Pipeline Architecture**
 
 ```
-User Input → Security Validation → Project Analysis → Report Generation → 7 Output Files
+User Input → Security Validation → Project Analysis → Report Generation →  Output Files
      ↓              ↓                    ↓                   ↓               ↓
-   Query        🛡️ Sanitize        🔍 Analysis        ✍️ Writer      📁 Artifacts
-              (2 Agents)          (2 Agents)        (2 Agents)
+   Query        Sanitize              Analysis             Writer       Artifacts
+               (2 Agents)            (2 Agents)          (2 Agents)
 ```
 
 ### **Technology Stack**
@@ -121,9 +108,9 @@ User Input → Security Validation → Project Analysis → Report Generation �
 
 ---
 
-## 🔧 **Detailed Component Breakdown**
+##  **Detailed Component Breakdown**
 
-### **Stage 1: 🛡️ Sanitize Crew** 
+### **Stage 1:  Sanitize Crew** 
 *Location*: `src/report_generator/crews/sanitize_crew/`
 
 **Purpose**: Security validation and query improvement
@@ -135,14 +122,14 @@ User Input → Security Validation → Project Analysis → Report Generation �
   - **Output**: `output/sanitized_query.json` - Improved query data
 
 #### **Security Features**:
-- ✅ Prompt injection detection
-- ✅ Content appropriateness validation  
-- ✅ Context-aware security analysis
-- ✅ Risk level assessment (LOW/MEDIUM/HIGH)
+-  Prompt injection detection
+-  Content appropriateness validation  
+- Context-aware security analysis
+-  Risk level assessment (LOW/MEDIUM/HIGH)
 
 ---
 
-### **Stage 2: 🔍 Analysis Crew**
+### **Stage 2:  Analysis Crew**
 *Location*: `src/report_generator/crews/analysis_crew/`
 
 **Purpose**: Project analysis and content structuring
@@ -154,14 +141,13 @@ User Input → Security Validation → Project Analysis → Report Generation �
   - **Output**: `output/detailed_outline.json` - Detailed report structure
 
 #### **Analysis Features**:
-- 🎯 Target audience detection (technical/non-technical)
-- 🏗️ Project complexity assessment  
-- 📋 Hierarchical outline generation
-- 🇮🇹 Localized Italian output
+-  Target audience detection (technical/non-technical)
+-  Project complexity assessment  
+-  Hierarchical outline generation
 
 ---
 
-### **Stage 3: ✍️ Writer Crew**
+### **Stage 3:  Writer Crew**
 *Location*: `src/report_generator/crews/writer_crew/`
 
 **Purpose**: Information retrieval and final report writing
@@ -174,14 +160,14 @@ User Input → Security Validation → Project Analysis → Report Generation �
   - **Output**: `output/final_report.md` - Complete markdown report
 
 #### **RAG Features**:
-- 🔍 Semantic + keyword hybrid search
-- 🎯 MMR (Maximum Marginal Relevance) diversification
-- 📚 Multi-format document support (PDF, MD, HTML)
-- 🔗 Source citation tracking
+-  Semantic + keyword hybrid search
+-  MMR (Maximum Marginal Relevance) diversification
+-  Multi-format document support (PDF, MD, HTML)
+-  Source citation tracking
 
 ---
 
-## 🗂️ **Knowledge Base & RAG System**
+##  **Knowledge Base & RAG System**
 
 ### **Document Sources**
 *Location*: `src/report_generator/tools/docs/`
@@ -214,19 +200,19 @@ mmr_lambda = 0.6         # Diversity vs relevance balance
 
 ---
 
-## 📁 **Output Structure**
+## **Output Structure**
 
 Each execution generates **7 comprehensive files**:
 
 ```
 output/
-├── 🛡️ security_check.json      # Security validation results
-├── 🔧 sanitized_query.json     # Improved user query  
-├── 📊 project_analysis.json    # Project analysis (Italian)
-├── 📋 detailed_outline.json    # Hierarchical report structure
-├── 🔍 rag_search_results.md    # Retrieved documents with citations
-├── 📄 final_report.md          # Complete generated report
-└── 📈 generation_summary.md    # Process metadata & status
+├──  security_check.json      # Security validation results
+├──  sanitized_query.json     # Improved user query  
+├──  project_analysis.json    # Project analysis (Italian)
+├──  detailed_outline.json    # Hierarchical report structure
+├──  rag_search_results.md    # Retrieved documents with citations
+├──  final_report.md          # Complete generated report
+└──  generation_summary.md    # Process metadata & status
 ```
 
 ### **File Details**
@@ -243,7 +229,7 @@ output/
 
 ---
 
-## 🧪 **Evaluation & Monitoring System**
+##  **Evaluation & Monitoring System**
 
 ### **MLflow Integration**
 *Location*: `report_generator/evaluation/`
@@ -280,24 +266,24 @@ python test_analysis_crew_mlflow.py
 
 #### **Performance Benchmarks**
 
-- **Score > 0.8**: Excellent performance 🟢
-- **Score 0.6-0.8**: Good performance 🟡  
-- **Score < 0.6**: Needs improvement 🔴
+- **Score > 0.8**: Excellent performance 
+- **Score 0.6-0.8**: Good performance 
+- **Score < 0.6**: Needs improvement 
 
 ---
 
-## 📚 **Documentation System**
+##  **Documentation System**
 
 ### **Sphinx Documentation**
 *Location*: `docs/`
 
 Professional documentation with:
 
-- 📖 **API Reference** - Auto-generated from docstrings
-- 🚀 **Quick Start Guide** - Installation and setup
-- 🏗️ **Architecture Guide** - System design and components
-- 💡 **Examples** - Usage patterns and code samples
-- 🧪 **Development Guide** - Contributing and testing
+-  **API Reference** - Auto-generated from docstrings
+-  **Quick Start Guide** - Installation and setup
+-  **Architecture Guide** - System design and components
+-  **Examples** - Usage patterns and code samples
+-  **Development Guide** - Contributing and testing
 
 #### **Build Documentation**
 
@@ -310,72 +296,36 @@ python build_docs.py watch    # Live reload development
 
 ---
 
-## 🛠️ **Development & Customization**
+##  **Development & Customization**
 
 ### **Project Structure**
 
 ```
 AI-Academy-Final-Project/
-├── 📁 report_generator/           # Main application
-│   ├── 🔧 pyproject.toml         # Dependencies & config
-│   ├── 🔒 uv.lock                # Locked dependencies  
-│   ├── 📁 src/report_generator/
-│   │   ├── 🚀 main.py            # Flow controller & entry point
-│   │   ├── 📁 crews/             # Three specialized crews
-│   │   │   ├── 🛡️ sanitize_crew/  # Security validation
-│   │   │   ├── 🔍 analysis_crew/  # Project analysis  
-│   │   │   └── ✍️ writer_crew/    # Report writing
-│   │   ├── 📁 tools/             # RAG system & utilities
-│   │   │   ├── 🔍 rag_tool.py    # CrewAI RAG tool wrapper
-│   │   │   ├── ⚙️ rag_qdrant_hybrid.py # Hybrid search engine
-│   │   │   └── 📚 docs/          # Knowledge base documents
-│   │   └── 📁 evaluation/        # MLflow evaluation system
-│   └── 📁 output/               # Generated artifacts (7 files)
-├── 📚 docs/                     # Sphinx documentation
-│   ├── 🏗️ source/              # Documentation source files  
-│   ├── 📄 build_docs.py        # Build automation script
-│   └── 📁 _build/html/          # Generated documentation
-└── 📋 README.md                # This comprehensive guide
+├──  report_generator/           # Main application
+│   ├──  pyproject.toml         # Dependencies & config
+│   ├──  uv.lock                # Locked dependencies  
+│   ├──  src/report_generator/
+│   │   ├──  main.py            # Flow controller & entry point
+│   │   ├──  crews/             # Three specialized crews
+│   │   │   ├──  sanitize_crew/  # Security validation
+│   │   │   ├──  analysis_crew/  # Project analysis  
+│   │   │   └──  writer_crew/    # Report writing
+│   │   ├──  tools/             # RAG system & utilities
+│   │   │   ├──  rag_tool.py    # CrewAI RAG tool wrapper
+│   │   │   ├──  rag_qdrant_hybrid.py # Hybrid search engine
+│   │   │   └──  docs/          # Knowledge base documents
+│   │   └──  evaluation/        # MLflow evaluation system
+│   └──  output/               # Generated artifacts (7 files)
+├──  docs/                     # Sphinx documentation
+│   ├──  source/              # Documentation source files  
+│   ├──  build_docs.py        # Build automation script
+│   └──  _build/html/          # Generated documentation
+└──  README.md                # This comprehensive guide
 ```
 
-### **Adding New Features**
 
-#### **1. Add New Crew**
-```python
-# Create new crew in src/report_generator/crews/
-class NewCrew:
-    @agent
-    def specialist_agent(self) -> Agent:
-        return Agent(
-            config=self.agents_config['specialist'],
-            tools=[custom_tool],
-            llm=self.llm
-        )
-```
-
-#### **2. Custom RAG Tool**
-```python
-# Extend RAG capabilities in tools/
-class CustomRagTool(BaseTool):
-    name: str = "Custom RAG Tool"
-    description: str = "Specialized retrieval logic"
-    
-    def _run(self, query: str) -> str:
-        # Custom implementation
-        return results
-```
-
-#### **3. New Evaluation Metrics**
-```python
-# Add metrics in evaluation/
-def custom_evaluation_metric(output_data, expected_data):
-    # Custom evaluation logic
-    return score
-```
-
----
-
-## 🔧 **Configuration & Customization**
+##  **Configuration & Customization**
 
 ### **Environment Configuration**
 
@@ -419,7 +369,7 @@ agents:
 
 ---
 
-## 🚨 **Troubleshooting Guide**
+## **Troubleshooting Guide**
 
 ### **Common Issues**
 
@@ -464,7 +414,7 @@ result = crew.crew().kickoff(inputs={"user_input": "test"})
 
 ---
 
-## 📊 **Performance & Scaling**
+##  **Performance & Scaling**
 
 ### **System Performance**
 
@@ -484,7 +434,7 @@ result = crew.crew().kickoff(inputs={"user_input": "test"})
 
 ---
 
-## 🤝 **Contributing & Development**
+##  **Contributing & Development**
 
 ### **Development Workflow**
 
@@ -511,7 +461,7 @@ result = crew.crew().kickoff(inputs={"user_input": "test"})
 
 ---
 
-## 📄 **License & Credits**
+## **License & Credits**
 
 ### **License**
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -527,12 +477,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### **Contributors**
 
-- **Primary Developer**: [Alessio Buda](https://github.com/alessio-buda)
+- **Developers**:
+- [Tiziano Bardini](https://github.com/tiziano97)
+- [Alessio Buda](https://github.com/alessio-buda)
+- [Emanuela Rremilli](https://github.com/em-rg)
+- [Danilo Santo](https://github.com/DaniloSanto01)
 - **AI Academy** - Educational framework and guidance
 
 ---
 
-## 📞 **Support & Contact**
+##  **Support & Contact**
 
 ### **Getting Help**
 
@@ -550,23 +504,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Azure OpenAI**: https://learn.microsoft.com/en-us/azure/cognitive-services/openai/
 
 ---
-
-## 🏆 **Project Status & Roadmap**
-
-### **Current Status**
-- ✅ **Core Pipeline**: Fully functional 3-crew system
-- ✅ **RAG System**: Hybrid search with Qdrant integration  
-- ✅ **Security**: Comprehensive input validation
-- ✅ **Evaluation**: MLflow-based performance tracking
-- ✅ **Documentation**: Complete Sphinx documentation
-- ⚠️ **RAG Debugging**: Ongoing optimization of tool integration
-
-### **Upcoming Features**
-- 🔄 **Web Interface**: Streamlit/Gradio web UI
-- 📊 **Advanced Analytics**: Enhanced evaluation metrics  
-- 🌐 **Multi-language**: Support for additional languages
-- 🔌 **API Server**: REST API for system integration
-- 📱 **Mobile Support**: Responsive web interface
 
 ---
 

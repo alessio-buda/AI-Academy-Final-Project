@@ -7,23 +7,23 @@ analyze_project_task:
     - Identify key technical or business components
     - Determine if the project is technical or business-oriented
     - Assess the appropriate target audience level
-    - Create a clear, concise Italian project description
+    - Create a clear, concise project description
     
     **Target Audience Determination:**
-    - "tecnico": For projects involving APIs, algorithms, technical implementation, code, architecture
-    - "non tecnico": For business projects, general concepts, management-oriented content
+    - "technical": For projects involving APIs, algorithms, technical implementation, code, architecture
+    - "non-technical": For business projects, general concepts, management-oriented content
     
   expected_output: |
     A structured JSON analysis:
     ```json
     {
-      "breve_descrizione_del_progetto": "Una descrizione concisa e chiara del progetto in italiano (2-3 frasi)",
-      "obiettivi_principali": ["Obiettivo 1", "Obiettivo 2", "Obiettivo 3"],
-      "componenti_chiave": ["Componente 1", "Componente 2", "Componente 3"],
-      "target_audience": "tecnico|non tecnico",
-      "complessita_tecnica": "bassa|media|alta",
-      "settore_applicativo": "Settore di applicazione del progetto"
-    }
+      "brief_project_description": "A concise and clear description of the project in English (2-3 sentences)",
+      "main_objectives": ["Objective 1", "Objective 2", "Objective 3"],
+      "key_components": ["Component 1", "Component 2", "Component 3"],
+      "target_audience": "technical|non-technical",
+      "technical_complexity": "low|medium|high",
+      "application_sector": "Project application sector"
+        }
     ```
 
 create_outline_task:
@@ -49,24 +49,24 @@ create_outline_task:
     A detailed outline structure:
     ```json
     {
-      "titolo_report": "Titolo del report in italiano",
-      "sezioni": [
-        {
-          "titolo": "Nome della sezione principale",
-          "descrizione": "Breve descrizione di cosa copre questa sezione",
-          "sottosezioni": [
-            {
-              "titolo": "Sottosezione 1",
-              "descrizione": "Descrizione dettagliata del contenuto"
-            },
-            {
-              "titolo": "Sottosezione 2", 
-              "descrizione": "Descrizione dettagliata del contenuto"
-            }
-          ]
-        }
-      ],
-      "target_audience": "tecnico|non tecnico",
-      "stile_comunicazione": "formale|informale|tecnico|business"
+      "report_title": "Report title in English",
+        "sections": [
+          {
+            "title": "Main section name",
+            "description": "Brief description of what this section covers",
+            "subsections": [
+          {
+            "title": "Subsection 1",
+            "description": "Detailed description of the content"
+          },
+          {
+            "title": "Subsection 2", 
+            "description": "Detailed description of the content"
+          }
+            ]
+          }
+        ],
+        "target_audience": "technical|non-technical",
+        "communication_style": "formal|informal|technical|business"
     }
     ```

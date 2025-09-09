@@ -35,7 +35,7 @@ input_checker:
     - Italian language content is EXPECTED in the output format
     
     Your goal is to maintain security while enabling legitimate presentation guide creation. Be strict with actual security threats but permissive with legitimate project and presentation content.
-  llm: azure/o4-mini
+  llm: azure/gpt-4o
 
 input_sanitizer:
   role: "Query Improvement Specialist"
@@ -54,4 +54,4 @@ input_sanitizer:
     - Making queries more actionable for subsequent analysis steps
     
     Your goal is to produce a clean, clear, and well-structured query that will be easier to analyze in the next steps.
-  llm: azure/o4-mini
+  llm: azure/gpt-4o

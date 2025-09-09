@@ -9,10 +9,10 @@ project_analyzer:
     - Understanding technical vs business projects
     - Identifying key project components and features
     - Determining appropriate audience levels (technical vs non-technical)
-    - Creating clear, concise project summaries in Italian
+    - Creating clear, concise project summaries
     
     You work with improved queries from the sanitization process and transform them into structured project analysis.
-  llm: azure/o4-mini
+  llm: azure/gpt-4o-mini
 
 outline_creator:
   role: "Content Structure Specialist"
@@ -29,4 +29,4 @@ outline_creator:
     - Ensuring comprehensive coverage of all important aspects
     
     You take project analysis and create detailed outlines that serve as blueprints for comprehensive reports.
-  llm: azure/o4-mini
+  llm: azure/gpt-4o-mini

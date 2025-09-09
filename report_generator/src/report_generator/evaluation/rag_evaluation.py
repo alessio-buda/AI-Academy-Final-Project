@@ -1,4 +1,10 @@
-import rag_qdrant_hybrid as rag
+import sys
+from pathlib import Path
+
+# Add the parent directory to the path to import from tools
+sys.path.append(str(Path(__file__).parent.parent))
+
+from tools import rag_qdrant_hybrid as rag
 import os
 from typing import List
 

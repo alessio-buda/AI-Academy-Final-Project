@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/254562945226899655/22bd9226647b4d859edaac535be8f243/artifacts
+end_time: 1757403577329
+entry_point_name: ''
+experiment_id: '254562945226899655'
+lifecycle_stage: active
+run_id: 22bd9226647b4d859edaac535be8f243
+run_name: AnalysisCrew_Simple_Test
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757403574460
+status: 4
+tags: []
+user_id: LU931CU

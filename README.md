@@ -1,4 +1,4 @@
-# AI Academy Final Project - Multi-Crew Report Generator
+# AI Academy Final Project - DocuGen AI
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://python.org)
 [![CrewAI](https://img.shields.io/badge/CrewAI-0.177.0%2B-orange)](https://github.com/joaomdmoura/crewAI)

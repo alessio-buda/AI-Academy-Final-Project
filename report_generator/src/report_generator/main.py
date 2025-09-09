@@ -123,13 +123,10 @@ class ReportFlow(Flow[ReportState]):
         # Step 1: Sanitize Crew - Security check and query improvement
         sanitize_result = SanitizeCrew().crew().kickoff(inputs=inputs)
         
-        print("SanitizeCrew result:", sanitize_result.raw)
-        
         # Parse the JSON output from SanitizeCrew
         try:
             
             raw_output = sanitize_result.raw
-            print("Raw sanitized output:", raw_output)
             
             # Remove markdown code blocks if present
             if "```json" in raw_output:
@@ -143,8 +140,6 @@ class ReportFlow(Flow[ReportState]):
             
             self.state.sanitized_data = json.loads(json_content)
 
-            print("✅ Parsed sanitized data:", self.state.sanitized_data)
-
             # Check if input was approved
             if self.state.sanitized_data.get("status") != "APPROVED":
                 print("❌ Input blocked by security validation")
@@ -154,6 +149,9 @@ class ReportFlow(Flow[ReportState]):
         except json.JSONDecodeError as e:
             print(f"❌ Error parsing output: {e}")
             print("Raw output:", sanitize_result.raw)
+            
+        cont = input("Continue? (y/n): ")
+        if cont.lower() == "y":
             return
             
     @listen(sanitize_input)
@@ -191,7 +189,6 @@ class ReportFlow(Flow[ReportState]):
         
         print("Starting AnalysisCrew...")
         analysis_result = AnalysisCrew().crew().kickoff(inputs=analysis_inputs)
-        print("AnalysisCrew result:", analysis_result.raw)
         
         # Parse analysis result
         analysis_output = analysis_result.raw
@@ -205,7 +202,10 @@ class ReportFlow(Flow[ReportState]):
             analysis_content = analysis_output
         
         self.state.analysis_data = json.loads(analysis_content)
-        print("✅ Parsed analysis data:", self.state.analysis_data)
+        
+        cont = input("Continue? (y/n): ")
+        if cont.lower() == "y":
+            return
             
     @listen(generate_outline)
     def write_report(self, state: ReportState) -> None:
@@ -253,7 +253,6 @@ class ReportFlow(Flow[ReportState]):
         
         print("Starting WriterCrew...")
         result = WriterCrew().crew().kickoff(inputs=writer_inputs)
-        print("WriterCrew result:", result.raw)
         
         # Create a summary file with all steps
         summary_content = f"""# Report Generation Summary
